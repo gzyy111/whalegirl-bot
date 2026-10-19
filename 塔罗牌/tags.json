@@ -1,0 +1,718 @@
+{
+ "version": 1,
+ "labels": [
+  "大阿尔卡纳",
+  "权杖",
+  "圣杯",
+  "宝剑",
+  "星币",
+  "火",
+  "水",
+  "风",
+  "土"
+ ],
+ "files": {
+  "images/the-fool.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 0,
+   "element": "大阿尔卡纳",
+   "court": null,
+   "keyword": "自由",
+   "name": "愚者"
+  },
+  "images/the-magician.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 1,
+   "element": "大阿尔卡纳",
+   "court": null,
+   "keyword": "创造力",
+   "name": "魔术师"
+  },
+  "images/the-high-priestess.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 2,
+   "element": "大阿尔卡纳",
+   "court": null,
+   "keyword": "精神性",
+   "name": "女祭司"
+  },
+  "images/the-empress.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 3,
+   "element": "大阿尔卡纳",
+   "court": null,
+   "keyword": "丰饶",
+   "name": "皇后"
+  },
+  "images/the-emperor.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 4,
+   "element": "大阿尔卡纳",
+   "court": null,
+   "keyword": "社会",
+   "name": "皇帝"
+  },
+  "images/the-hierophant.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 5,
+   "element": "大阿尔卡纳",
+   "court": null,
+   "keyword": "伦理道德",
+   "name": "教皇"
+  },
+  "images/the-lovers.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 6,
+   "element": "大阿尔卡纳",
+   "court": null,
+   "keyword": "舒适惬意",
+   "name": "恋人"
+  },
+  "images/the-chariot.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 7,
+   "element": "大阿尔卡纳",
+   "court": null,
+   "keyword": "胜利",
+   "name": "战车"
+  },
+  "images/strength.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 8,
+   "element": "大阿尔卡纳",
+   "court": null,
+   "keyword": "本质上的力量",
+   "name": "力量"
+  },
+  "images/the-hermit.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 9,
+   "element": "大阿尔卡纳",
+   "court": null,
+   "keyword": "探究",
+   "name": "隐者"
+  },
+  "images/wheel-of-fortune.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 10,
+   "element": "大阿尔卡纳",
+   "court": null,
+   "keyword": "命中注定",
+   "name": "命运之轮"
+  },
+  "images/justice.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 11,
+   "element": "大阿尔卡纳",
+   "court": "侍者",
+   "keyword": "平衡",
+   "name": "正义"
+  },
+  "images/the-hanged-man.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 12,
+   "element": "大阿尔卡纳",
+   "court": "骑士",
+   "keyword": "静止",
+   "name": "倒吊人"
+  },
+  "images/death.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 13,
+   "element": "大阿尔卡纳",
+   "court": "王后",
+   "keyword": "定数",
+   "name": "死神"
+  },
+  "images/temperance.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 14,
+   "element": "大阿尔卡纳",
+   "court": "国王",
+   "keyword": "反应",
+   "name": "节制"
+  },
+  "images/the-devil.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 15,
+   "element": "大阿尔卡纳",
+   "court": null,
+   "keyword": "咒缚",
+   "name": "恶魔"
+  },
+  "images/the-tower.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 16,
+   "element": "大阿尔卡纳",
+   "court": null,
+   "keyword": "破坏",
+   "name": "塔"
+  },
+  "images/the-star.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 17,
+   "element": "大阿尔卡纳",
+   "court": null,
+   "keyword": "希望",
+   "name": "星星"
+  },
+  "images/the-moon.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 18,
+   "element": "大阿尔卡纳",
+   "court": null,
+   "keyword": "神秘",
+   "name": "月亮"
+  },
+  "images/the-sun.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 19,
+   "element": "大阿尔卡纳",
+   "court": null,
+   "keyword": "欢欣",
+   "name": "太阳"
+  },
+  "images/judgement.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 20,
+   "element": "大阿尔卡纳",
+   "court": null,
+   "keyword": "解放",
+   "name": "审判"
+  },
+  "images/the-world.jpg": {
+   "arcana": "major",
+   "suit": null,
+   "number": 21,
+   "element": "大阿尔卡纳",
+   "court": null,
+   "keyword": "完成",
+   "name": "世界"
+  },
+  "images/ace-of-cups.jpg": {
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 1,
+   "element": "水",
+   "court": null,
+   "keyword": "情爱",
+   "name": "圣杯一"
+  },
+  "images/two-of-cups.jpg": {
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 2,
+   "element": "水",
+   "court": null,
+   "keyword": "结合",
+   "name": "圣杯二"
+  },
+  "images/three-of-cups.jpg": {
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 3,
+   "element": "水",
+   "court": null,
+   "keyword": "庆祝",
+   "name": "圣杯三"
+  },
+  "images/four-of-cups.jpg": {
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 4,
+   "element": "水",
+   "court": null,
+   "keyword": "不满",
+   "name": "圣杯四"
+  },
+  "images/five-of-cups.jpg": {
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 5,
+   "element": "水",
+   "court": null,
+   "keyword": "丧失",
+   "name": "圣杯五"
+  },
+  "images/six-of-cups.jpg": {
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 6,
+   "element": "水",
+   "court": null,
+   "keyword": "回忆",
+   "name": "圣杯六"
+  },
+  "images/seven-of-cups.jpg": {
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 7,
+   "element": "水",
+   "court": null,
+   "keyword": "幻想",
+   "name": "圣杯七"
+  },
+  "images/eight-of-cups.jpg": {
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 8,
+   "element": "水",
+   "court": null,
+   "keyword": "离去",
+   "name": "圣杯八"
+  },
+  "images/nine-of-cups.jpg": {
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 9,
+   "element": "水",
+   "court": null,
+   "keyword": "满足",
+   "name": "圣杯九"
+  },
+  "images/ten-of-cups.jpg": {
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 10,
+   "element": "水",
+   "court": null,
+   "keyword": "幸福",
+   "name": "圣杯十"
+  },
+  "images/page-of-cups.jpg": {
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 11,
+   "element": "水",
+   "court": "侍者",
+   "keyword": "感受性",
+   "name": "圣杯侍者"
+  },
+  "images/knight-of-cups.jpg": {
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 12,
+   "element": "水",
+   "court": "骑士",
+   "keyword": "浪漫",
+   "name": "圣杯骑士"
+  },
+  "images/queen-of-cups.jpg": {
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 13,
+   "element": "水",
+   "court": "王后",
+   "keyword": "慈爱",
+   "name": "圣杯王后"
+  },
+  "images/king-of-cups.jpg": {
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 14,
+   "element": "水",
+   "court": "国王",
+   "keyword": "情感控制",
+   "name": "圣杯国王"
+  },
+  "images/ace-of-pentacles.jpg": {
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 1,
+   "element": "土",
+   "court": null,
+   "keyword": "实力",
+   "name": "星币一"
+  },
+  "images/two-of-pentacles.jpg": {
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 2,
+   "element": "土",
+   "court": null,
+   "keyword": "柔软度",
+   "name": "星币二"
+  },
+  "images/three-of-pentacles.jpg": {
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 3,
+   "element": "土",
+   "court": null,
+   "keyword": "技术力",
+   "name": "星币三"
+  },
+  "images/four-of-pentacles.jpg": {
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 4,
+   "element": "土",
+   "court": null,
+   "keyword": "占有欲",
+   "name": "星币四"
+  },
+  "images/five-of-pentacles.jpg": {
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 5,
+   "element": "土",
+   "court": null,
+   "keyword": "困难",
+   "name": "星币五"
+  },
+  "images/six-of-pentacles.jpg": {
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 6,
+   "element": "土",
+   "court": null,
+   "keyword": "关联性",
+   "name": "星币六"
+  },
+  "images/seven-of-pentacles.jpg": {
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 7,
+   "element": "土",
+   "court": null,
+   "keyword": "成长",
+   "name": "星币七"
+  },
+  "images/eight-of-pentacles.jpg": {
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 8,
+   "element": "土",
+   "court": null,
+   "keyword": "修行",
+   "name": "星币八"
+  },
+  "images/nine-of-pentacles.jpg": {
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 9,
+   "element": "土",
+   "court": null,
+   "keyword": "达成",
+   "name": "星币九"
+  },
+  "images/ten-of-pentacles.jpg": {
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 10,
+   "element": "土",
+   "court": null,
+   "keyword": "继承",
+   "name": "星币十"
+  },
+  "images/page-of-pentacles.jpg": {
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 11,
+   "element": "土",
+   "court": "侍者",
+   "keyword": "诚挚",
+   "name": "星币侍者"
+  },
+  "images/knight-of-pentacles.jpg": {
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 12,
+   "element": "土",
+   "court": "骑士",
+   "keyword": "现实性",
+   "name": "星币骑士"
+  },
+  "images/queen-of-pentacles.jpg": {
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 13,
+   "element": "土",
+   "court": "王后",
+   "keyword": "宽容",
+   "name": "星币王后"
+  },
+  "images/king-of-pentacles.jpg": {
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 14,
+   "element": "土",
+   "court": "国王",
+   "keyword": "贡献",
+   "name": "星币国王"
+  },
+  "images/ace-of-swords.jpg": {
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 1,
+   "element": "风",
+   "court": null,
+   "keyword": "开拓",
+   "name": "宝剑一"
+  },
+  "images/two-of-swords.jpg": {
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 2,
+   "element": "风",
+   "court": null,
+   "keyword": "纠葛",
+   "name": "宝剑二"
+  },
+  "images/three-of-swords.jpg": {
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 3,
+   "element": "风",
+   "court": null,
+   "keyword": "疼痛",
+   "name": "宝剑三"
+  },
+  "images/four-of-swords.jpg": {
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 4,
+   "element": "风",
+   "court": null,
+   "keyword": "恢复",
+   "name": "宝剑四"
+  },
+  "images/five-of-swords.jpg": {
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 5,
+   "element": "风",
+   "court": null,
+   "keyword": "混乱",
+   "name": "宝剑五"
+  },
+  "images/six-of-swords.jpg": {
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 6,
+   "element": "风",
+   "court": null,
+   "keyword": "中途",
+   "name": "宝剑六"
+  },
+  "images/seven-of-swords.jpg": {
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 7,
+   "element": "风",
+   "court": null,
+   "keyword": "背叛",
+   "name": "宝剑七"
+  },
+  "images/eight-of-swords.jpg": {
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 8,
+   "element": "风",
+   "court": null,
+   "keyword": "忍耐",
+   "name": "宝剑八"
+  },
+  "images/nine-of-swords.jpg": {
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 9,
+   "element": "风",
+   "court": null,
+   "keyword": "苦闷",
+   "name": "宝剑九"
+  },
+  "images/ten-of-swords.jpg": {
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 10,
+   "element": "风",
+   "court": null,
+   "keyword": "岔路",
+   "name": "宝剑十"
+  },
+  "images/page-of-swords.jpg": {
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 11,
+   "element": "风",
+   "court": "侍者",
+   "keyword": "警戒",
+   "name": "宝剑侍者"
+  },
+  "images/knight-of-swords.jpg": {
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 12,
+   "element": "风",
+   "court": "骑士",
+   "keyword": "果敢",
+   "name": "宝剑骑士"
+  },
+  "images/queen-of-swords.jpg": {
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 13,
+   "element": "风",
+   "court": "王后",
+   "keyword": "正确",
+   "name": "宝剑王后"
+  },
+  "images/king-of-swords.jpg": {
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 14,
+   "element": "风",
+   "court": "国王",
+   "keyword": "严格",
+   "name": "宝剑国王"
+  },
+  "images/ace-of-wands.jpg": {
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 1,
+   "element": "火",
+   "court": null,
+   "keyword": "生命力",
+   "name": "权杖一"
+  },
+  "images/two-of-wands.jpg": {
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 2,
+   "element": "火",
+   "court": null,
+   "keyword": "到达",
+   "name": "权杖二"
+  },
+  "images/three-of-wands.jpg": {
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 3,
+   "element": "火",
+   "court": null,
+   "keyword": "摸索",
+   "name": "权杖三"
+  },
+  "images/four-of-wands.jpg": {
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 4,
+   "element": "火",
+   "court": null,
+   "keyword": "欢喜",
+   "name": "权杖四"
+  },
+  "images/five-of-wands.jpg": {
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 5,
+   "element": "火",
+   "court": null,
+   "keyword": "取胜",
+   "name": "权杖五"
+  },
+  "images/six-of-wands.jpg": {
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 6,
+   "element": "火",
+   "court": null,
+   "keyword": "称赞",
+   "name": "权杖六"
+  },
+  "images/seven-of-wands.jpg": {
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 7,
+   "element": "火",
+   "court": null,
+   "keyword": "奋斗",
+   "name": "权杖七"
+  },
+  "images/eight-of-wands.jpg": {
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 8,
+   "element": "火",
+   "court": null,
+   "keyword": "急速发展",
+   "name": "权杖八"
+  },
+  "images/nine-of-wands.jpg": {
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 9,
+   "element": "火",
+   "court": null,
+   "keyword": "准备",
+   "name": "权杖九"
+  },
+  "images/ten-of-wands.jpg": {
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 10,
+   "element": "火",
+   "court": null,
+   "keyword": "沉重的压力",
+   "name": "权杖十"
+  },
+  "images/page-of-wands.jpg": {
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 11,
+   "element": "火",
+   "court": "侍者",
+   "keyword": "传令",
+   "name": "权杖侍者"
+  },
+  "images/knight-of-wands.jpg": {
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 12,
+   "element": "火",
+   "court": "骑士",
+   "keyword": "出发",
+   "name": "权杖骑士"
+  },
+  "images/queen-of-wands.jpg": {
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 13,
+   "element": "火",
+   "court": "王后",
+   "keyword": "魅力",
+   "name": "权杖王后"
+  },
+  "images/king-of-wands.jpg": {
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 14,
+   "element": "火",
+   "court": "国王",
+   "keyword": "果敢",
+   "name": "权杖国王"
+  }
+ }
+}

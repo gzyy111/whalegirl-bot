@@ -1,0 +1,1337 @@
+{
+ "_meta": {
+  "source": "@cometpisces/tarot-kit 0.2.0 (npm)",
+  "license": "MIT",
+  "system": "Rider-Waite",
+  "note": "牌义中文由繁体转简体；仅保留解牌字段",
+  "count": 78
+ },
+ "cards": [
+  {
+   "id": "the-fool",
+   "name": "愚者",
+   "name_en": "The Fool",
+   "arcana": "major",
+   "suit": null,
+   "number": 0,
+   "keyword": "自由",
+   "upright": "表现出不受“该这样”的既定观念、常识或世俗眼光所束缚的纯粹价值观，依照自己的心意生活的状态。因此会有出乎意料的机会从天而降，或涌现崭新的点子。",
+   "reversed": "凡事都犹豫不决的消极面特别显眼。由于漫无目的地持续游荡，而遭受居无定所的孤独感折磨。随心所欲的个性也会被视为态度不负责任，导致失去周遭人们的信任。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "某种新事物展开/不知道会发生什么事/难以预料/故事开始/启程出发的时刻将近/想法转变",
+     "reversed": "没有明确方针/随波逐流/立场不稳定/责任归属不明确/无法决定/没有察觉严重的风险"
+    }
+   }
+  },
+  {
+   "id": "the-magician",
+   "name": "魔术师",
+   "name_en": "The Magician",
+   "arcana": "major",
+   "suit": null,
+   "number": 1,
+   "keyword": "创造力",
+   "upright": "拥有“自己想怎么做”的明确目标意识。因此不需要等待他人支援或准备，就会自动自发地展开行动。",
+   "reversed": "“为什么要那么做”的想法模糊且心怀迷惘，或许还没培养出真正的自信心。也可解释成做出滥用才能欺骗人这类低阶的行为。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "正站在起跑线上/万事俱备/周旋顺利的时候/天时地利人和的机会/应当掌握主导权的情况",
+     "reversed": "该停下脚步重新思考的时候/各方面都不够充分/只能靠口才或手腕来度过难关的状况/想前进却窒碍难行/得不到周遭认同"
+    }
+   }
+  },
+  {
+   "id": "the-high-priestess",
+   "name": "女祭司",
+   "name_en": "The High Priestess",
+   "arcana": "major",
+   "suit": null,
+   "number": 2,
+   "keyword": "精神性",
+   "upright": "借由天生的智慧与理性掌握问题/拥有高洁精神，不偏袒任何一方",
+   "reversed": "只看见自己想看的事物/洁癖或完美主义过于显眼",
+   "aspects": {
+    "currentSituation": {
+     "upright": "一切齐备/清心寡欲的生活/为了接近憧憬而努力/应当学习某事物/直觉与洞察力敏锐",
+     "reversed": "过于紧凑，应接不暇/未来无法预测/充满压力/与他人之间有隔阂"
+    }
+   }
+  },
+  {
+   "id": "the-empress",
+   "name": "皇后",
+   "name_en": "The Empress",
+   "arcana": "major",
+   "suit": null,
+   "number": 3,
+   "keyword": "丰饶",
+   "upright": "尽情享受丰饶的收成/自然接受爱、美、财富与成长",
+   "reversed": "对过剩的恩惠感到厌烦/失去感谢而怠惰或依赖",
+   "aspects": {
+    "currentSituation": {
+     "upright": "物质与精神上都游刃有余/能对人温柔/魅力正在提升/有喜事",
+     "reversed": "对现状坐享其成/依赖某人/慵懒无度/经常无法自制/饱和状态"
+    }
+   }
+  },
+  {
+   "id": "the-emperor",
+   "name": "皇帝",
+   "name_en": "The Emperor",
+   "arcana": "major",
+   "suit": null,
+   "number": 4,
+   "keyword": "社会",
+   "upright": "获得持续性的稳定/有效统率他人并尽到责任",
+   "reversed": "借由力量获得一时的稳定/以力服人而瓦解信任",
+   "aspects": {
+    "currentSituation": {
+     "upright": "努力的成绩确实开花结果的状态/维持现状的运气/建构起某些事物的状态/有高度责任感的时候/实力获得评价",
+     "reversed": "后继无力的状况/不稳定且没有目标的运气/严峻的现实阻挡在面前/迷失目标而徬徨/难以实现"
+    }
+   }
+  },
+  {
+   "id": "the-hierophant",
+   "name": "教皇",
+   "name_en": "The Hierophant",
+   "arcana": "major",
+   "suit": null,
+   "number": 5,
+   "keyword": "伦理道德",
+   "upright": "基于伦理道德缔结信任与羁绊/尊重、原谅并信任他人",
+   "reversed": "违反伦理道德，利用信任与羁绊/背叛他人的信任",
+   "aspects": {
+    "currentSituation": {
+     "upright": "平安无事的运气/维持秩序/没有纷争的状态/重视伦理道德或传统的氛围/追求救赎的时候/建立良好的信任关系",
+     "reversed": "被逼上情非得已的状况/魔掌暗中逼近/开始对至今为止的自己产生“这样真的好吗”的疑问/丧失信用"
+    }
+   }
+  },
+  {
+   "id": "the-lovers",
+   "name": "恋人",
+   "name_en": "The Lovers",
+   "arcana": "major",
+   "suit": null,
+   "number": 6,
+   "keyword": "舒适惬意",
+   "upright": "如同置身梦境般感觉幸福/受到快乐吸引并享受其中",
+   "reversed": "耽溺于眼前的快乐/只要现在好就好而不愿负责",
+   "aspects": {
+    "currentSituation": {
+     "upright": "愉快的时期/舒适的环境/不会感到不安的时刻/调性契合/游玩时能够享受其中/选择某事物的时候/心灵相通的状况",
+     "reversed": "浮动的运气/目光受吸引而难以决定/悬而未决/无论做什么都无法获得回报的徒劳时期/疏忽重要的事情"
+    }
+   }
+  },
+  {
+   "id": "the-chariot",
+   "name": "战车",
+   "name_en": "The Chariot",
+   "arcana": "major",
+   "suit": null,
+   "number": 7,
+   "keyword": "胜利",
+   "upright": "果敢地挑战事物/朝着目标勇往直前",
+   "reversed": "无法自我控制/力量失控而朝错误方向前进",
+   "aspects": {
+    "currentSituation": {
+     "upright": "乘势而行的运气/干劲十足/应该立刻采取行动的时候/朝向新目标/拥有跨越障碍的力量/与自己战斗的时候",
+     "reversed": "状况失去控制/不考虑后果就仓促行事/应该选择前进方向的状况/朝着错误方向前进/因为恐惧而无法出发"
+    }
+   }
+  },
+  {
+   "id": "strength",
+   "name": "力量",
+   "name_en": "Strength",
+   "arcana": "major",
+   "suit": null,
+   "number": 8,
+   "keyword": "本质上的力量",
+   "upright": "跨越困难/靠爱与耐心打动对方",
+   "reversed": "难以忍耐而撒手不管/无法坚持到最后",
+   "aspects": {
+    "currentSituation": {
+     "upright": "关键时刻/不得不面对如猛兽般的人物或状况/需要谨慎且周全地采取行动/能化危机为转机",
+     "reversed": "运势衰退/不得不对某些事物死心断念/精神力的强韧度遭到质疑/试图抛下一切/濒临崩溃边缘"
+    }
+   }
+  },
+  {
+   "id": "the-hermit",
+   "name": "隐者",
+   "name_en": "The Hermit",
+   "arcana": "major",
+   "suit": null,
+   "number": 9,
+   "keyword": "探究",
+   "upright": "追求理想/平静地审视内心并获得智慧",
+   "reversed": "不正视现实/紧抓过去荣耀而封闭自己",
+   "aspects": {
+    "currentSituation": {
+     "upright": "维持现状的运气/起伏不大的平稳状况/无论好坏都没有变化/学习的时候/想减少与人交流而独处的时候",
+     "reversed": "面对过去的自己的时候/沉溺于那个时候比较好的想法/事情停滞，虎头蛇尾/与世隔绝的状况"
+    }
+   }
+  },
+  {
+   "id": "wheel-of-fortune",
+   "name": "命运之轮",
+   "name_en": "Wheel of Fortune",
+   "arcana": "major",
+   "suit": null,
+   "number": 10,
+   "keyword": "命中注定",
+   "upright": "事态因命运的洪流而好转/意料之外的机会造访，必须迅速掌握",
+   "reversed": "被命运玩弄于股掌之间/不顺遂、浪费机会而筋疲力竭",
+   "aspects": {
+    "currentSituation": {
+     "upright": "越发一帆风顺的运气/运气好转/偶然重叠的幸运/令人高兴的情况/停滞的事情突然开始推进/命运的岔路",
+     "reversed": "一切徒劳无功/同样事情一再发生毫无进展/运气在惊慌期间下沉/遭到出乎意料的变化玩弄/毫无前兆的厄运"
+    }
+   }
+  },
+  {
+   "id": "justice",
+   "name": "正义",
+   "name_en": "Justice",
+   "arcana": "major",
+   "suit": null,
+   "number": 11,
+   "keyword": "平衡",
+   "upright": "不夹杂情感地冷静应对/事实合理地获得正当评价",
+   "reversed": "受到情感左右而采取不合理的应对/失衡与不公平",
+   "aspects": {
+    "currentSituation": {
+     "upright": "只靠运气无法推进/不夹带情感只考虑事实/过去的自己造成的结果/无法支持任何一方/不正当的事物受到制裁",
+     "reversed": "无法靠常识克服/过去不正当行径遭谴责/受到不公平对待/付出与报酬失衡/认同必要之恶"
+    }
+   }
+  },
+  {
+   "id": "the-hanged-man",
+   "name": "倒吊人",
+   "name_en": "The Hanged Man",
+   "arcana": "major",
+   "suit": null,
+   "number": 12,
+   "keyword": "静止",
+   "upright": "面对现况冷静思考/承认现实上的不如意",
+   "reversed": "无法接受现况而挣扎/越焦急抵抗越痛苦",
+   "aspects": {
+    "currentSituation": {
+     "upright": "凭一己之见无可奈何/在某人的处理之下动弹不得/独自度过的时候/强制停止/亲眼目睹自己的无力",
+     "reversed": "试图逃离痛苦却因挣扎而受苦/即使拼命抵抗也无计可施/被迫重来某些事/被当成杀鸡儆猴的对象"
+    }
+   }
+  },
+  {
+   "id": "death",
+   "name": "死神",
+   "name_en": "Death",
+   "arcana": "major",
+   "suit": null,
+   "number": 13,
+   "keyword": "定数",
+   "upright": "前往新的阶段/接受终结并迎向新生",
+   "reversed": "受到过去束缚而无法前进/恋栈现状使痛苦延长",
+   "aspects": {
+    "currentSituation": {
+     "upright": "某种事物面临终结/历经与重要的人别离/前往下一个阶段/改变人生的时机/持续变化",
+     "reversed": "停滞不前/运气忽好忽坏/跟不上逐渐改变的情势/试图拖延结束/无法整理情绪/无法接受的结局"
+    }
+   }
+  },
+  {
+   "id": "temperance",
+   "name": "节制",
+   "name_en": "Temperance",
+   "arcana": "major",
+   "suit": null,
+   "number": 14,
+   "keyword": "反应",
+   "upright": "接受全新事物/敞开心胸并理解不同意见或价值观",
+   "reversed": "无法接受性质相异的事物/拒绝意见而造成不协调",
+   "aspects": {
+    "currentSituation": {
+     "upright": "应该调整事物/从与他人的交流中察觉些什么/产生好的化学变化/整合与重组/有新的发现/刚刚好",
+     "reversed": "不协调的运气/对与人见面表示抗拒/各方面经常错身而过/置身格格不入的环境/冲突很多"
+    }
+   }
+  },
+  {
+   "id": "the-devil",
+   "name": "恶魔",
+   "name_en": "The Devil",
+   "arcana": "major",
+   "suit": null,
+   "number": 15,
+   "keyword": "咒缚",
+   "upright": "败给心里的恶魔/无法抗拒诱惑而被欲望吞噬",
+   "reversed": "与心里的恶魔交战/试图控制欲望并斩断不良关联",
+   "aspects": {
+    "currentSituation": {
+     "upright": "安于现况/受到束缚而没有进步/面临诱惑/很可能因稍微松懈而失去一切/顺从欲望/失序环境",
+     "reversed": "认为这样下去不行，试图摆脱现况/回到正轨上的机会/斩断长年咒缚/为曾经鬼迷心窍作补偿"
+    }
+   }
+  },
+  {
+   "id": "the-tower",
+   "name": "塔",
+   "name_en": "The Tower",
+   "arcana": "major",
+   "suit": null,
+   "number": 16,
+   "keyword": "破坏",
+   "upright": "突然降临的冲击/瞬间改变现况",
+   "reversed": "之后慢慢抵达的冲击/紧张与崩毁逐渐延长",
+   "aspects": {
+    "currentSituation": {
+     "upright": "变化的运气/发生出乎意料的意外/不知道发生什么事而茫然自失/改变想法的阶段/吃惊但不糟糕的状况",
+     "reversed": "某些事物缓缓崩毁/似乎要改变又没能改变，令人焦虑不安/世代交替缓缓进行/时机已过，只等消逝"
+    }
+   }
+  },
+  {
+   "id": "the-star",
+   "name": "星星",
+   "name_en": "The Star",
+   "arcana": "major",
+   "suit": null,
+   "number": 17,
+   "keyword": "希望",
+   "upright": "迎向光明的未来/头顶的希望之星证明正走在正确道路上",
+   "reversed": "什么也无法实现地随波消逝/希望变成失望",
+   "aspects": {
+    "currentSituation": {
+     "upright": "看见希望之光/对某事或某人产生期待/随着未来态势增加的运气/感觉到干劲的每一天/身心良好",
+     "reversed": "失去了引导的星星/事物一笔勾销回到原点/期待的活动延期/发展令人扫兴/不对未来抱持希望，过着闷闷不乐的每一天"
+    }
+   }
+  },
+  {
+   "id": "the-moon",
+   "name": "月亮",
+   "name_en": "The Moon",
+   "arcana": "major",
+   "suit": null,
+   "number": 18,
+   "keyword": "神秘",
+   "upright": "透过幻想看着现实/暧昧不明、不安、秘密与轮廓不清",
+   "reversed": "一点一点地看得见现实/幻象消失并逐渐明晰",
+   "aspects": {
+    "currentSituation": {
+     "upright": "善变而不稳定的运气/原因不明的烦躁感/正在担心的事挥之不去/有试图欺骗你的人接近",
+     "reversed": "就各种意义上清醒的时候/眼前变得清晰而突然看见现实/不安消散/至今所处之地突然看起来老旧不堪"
+    }
+   }
+  },
+  {
+   "id": "the-sun",
+   "name": "太阳",
+   "name_en": "The Sun",
+   "arcana": "major",
+   "suit": null,
+   "number": 19,
+   "keyword": "欢欣",
+   "upright": "努力获得成果/坦率享受成功与活着的喜悦",
+   "reversed": "看不见阳光/生命力不足并维持不成熟状态",
+   "aspects": {
+    "currentSituation": {
+     "upright": "提升到最高峰的运气/等待努力之后的成功/充满喜悦的每一天/感觉到充实/后势看涨/充满力量",
+     "reversed": "带有阴霾的运气/即使努力也不顺利/以并非本意的结果告终/无论做什么都不开心/虎头蛇尾/身心能量不足"
+    }
+   }
+  },
+  {
+   "id": "judgement",
+   "name": "审判",
+   "name_en": "Judgement",
+   "arcana": "major",
+   "suit": null,
+   "number": 20,
+   "keyword": "解放",
+   "upright": "掌握转瞬间的机会/释出原本珍藏或封印的事物",
+   "reversed": "延迟后就这样冻结/因犹豫而错过机会",
+   "aspects": {
+    "currentSituation": {
+     "upright": "转捩点/遗忘的计划或记忆复苏/机会在快放弃时降临/与重要人物重逢/再次挑战的时刻",
+     "reversed": "再怎么等也等不到帮手/错过千载难逢的机会/机会迟迟不降临/一切为时已晚/空等"
+    }
+   }
+  },
+  {
+   "id": "the-world",
+   "name": "世界",
+   "name_en": "The World",
+   "arcana": "major",
+   "suit": null,
+   "number": 21,
+   "keyword": "完成",
+   "upright": "达成目标而获得满足/在下一阶段前品尝喜悦",
+   "reversed": "因不满意的结果而撤退/虽有完成度却不如预期",
+   "aspects": {
+    "currentSituation": {
+     "upright": "运气绝佳/对至今为止的自己感到满意/获得令人羡慕的幸福/问题来到最后阶段/得到最棒结果的时候",
+     "reversed": "萎靡状态/还不到能获得满意结果的阶段/不好也不坏的不完全燃烧状态/没能回应周遭期待/维持未完成状态"
+    }
+   }
+  },
+  {
+   "id": "ace-of-wands",
+   "name": "权杖一",
+   "name_en": "Ace of Wands",
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 1,
+   "keyword": "生命力",
+   "upright": "展开新的挑战：力量高涨的状态。表现出产生新的目标，并为了令自己成长而试图踏出一步。",
+   "reversed": "一项挑战结束：暗示热情低落，事物逐渐迎向终结。反之也有代表力量失控的情况。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "朝着想做的事发展/面对新挑战的时候/干劲十足的情况",
+     "reversed": "强硬地推动事物/容易朝错误方向失控暴冲的运气/力量低落"
+    }
+   }
+  },
+  {
+   "id": "two-of-wands",
+   "name": "权杖二",
+   "name_en": "Two of Wands",
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 2,
+   "keyword": "到达",
+   "upright": "确实掌握了自己的功绩或成长。并以这份自信为基石，萌生“想朝着更上方迈进”的野心。",
+   "reversed": "可能会有失去得手的事物、被驱离原本地位的发展。或是历经努力得到的事物，看起来却褪色的情况。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "即将达成目标/能够满足的情况/下个发展即将开始",
+     "reversed": "面临预期之外的事态/孤立的环境/步调不一致"
+    }
+   }
+  },
+  {
+   "id": "three-of-wands",
+   "name": "权杖三",
+   "name_en": "Three of Wands",
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 3,
+   "keyword": "摸索",
+   "upright": "窥探挑战的机会：你正打算朝更上一层的阶段前进，决心已经成形，只差再推一把。采取行动的时机已经近在眼前。",
+   "reversed": "期待在闪躲的情况下告终：身心明明都已经做好准备，但因为没人推你一把而没有采取行动。暗示着你没有等到期待的通知。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "事物扩大的气息/等待令人欣喜的通知/获得协助的机会",
+     "reversed": "不如预期/联络耽搁/徒劳无功/遗憾"
+    }
+   }
+  },
+  {
+   "id": "four-of-wands",
+   "name": "权杖四",
+   "name_en": "Four of Wands",
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 4,
+   "keyword": "欢喜",
+   "upright": "暗示著从障碍中解放。获得安稳与自由，并切身体认到“我真正追求的就是这个”。",
+   "reversed": "放弃取得新事物，从现在的环境中找出喜悦。也显示出以被动态度接受事物的状态。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "放下肩上重担的状况/有好的邂逅的时候/令人高兴的事件",
+     "reversed": "状况不糟但无法满足/从现况中找出快乐的运气"
+    }
+   }
+  },
+  {
+   "id": "five-of-wands",
+   "name": "权杖五",
+   "name_en": "Five of Wands",
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 5,
+   "keyword": "取胜",
+   "upright": "争斗心虽高涨，却没有负面情感。试图借由战斗以抵达某个终点。",
+   "reversed": "进入战斗态势，试图伤害、推开对手。感觉得到为了让对方认输，而坚持战斗到底的意志。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "变化的运气/打开天窗说亮话的时期/决定胜负的时候",
+     "reversed": "状况混乱/无法收拾/被周遭玩弄而混乱的时候"
+    }
+   }
+  },
+  {
+   "id": "six-of-wands",
+   "name": "权杖六",
+   "name_en": "Six of Wands",
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 6,
+   "keyword": "称赞",
+   "upright": "获得评价，坦率地感觉开心的状态。心怀些许优越感，并对于事情顺利成功一事感到自豪。",
+   "reversed": "认为“自己做得明明更多”，而内心暗自感到不满。甚至对周遭的赞美感到烦躁，无法坦率地感到开心。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "达成一项目标的时候/似乎有令人高兴的新闻/令内心雀跃的运气",
+     "reversed": "无法按照预期进行的运气/即使达成也无法感到开心的状况/时间到"
+    }
+   }
+  },
+  {
+   "id": "seven-of-wands",
+   "name": "权杖七",
+   "name_en": "Seven of Wands",
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 7,
+   "keyword": "奋斗",
+   "upright": "站在有利的立场掌握事情的状态。在运气顺风的情况下，可以感觉到一切都站在你这一边。",
+   "reversed": "这张牌暗示的是处于严峻局面。你将被迫在压倒性不利的状况下面对战斗或挑战，有时也可解释成精神上的迷惘。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "能主张自我的状况/克服软弱/一决胜负的好时机",
+     "reversed": "无法下定决心的状况/被卷入无可避免的争斗中"
+    }
+   }
+  },
+  {
+   "id": "eight-of-wands",
+   "name": "权杖八",
+   "name_en": "Eight of Wands",
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 8,
+   "keyword": "急速发展",
+   "upright": "事物性急地动了起来，显示事态将会以无法预测的速度产生变化。有时也可解释成所希望的好事。",
+   "reversed": "原本顺利的事情突然地停了下来。暗示著因为出乎意料的问题导致停滞，这致令人不耐的封闭感。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "事态好转的运气/事物流畅地推动的状况/不间断的变化",
+     "reversed": "运气急转直下/出乎意料的发展/传来讨厌的消息"
+    }
+   }
+  },
+  {
+   "id": "nine-of-wands",
+   "name": "权杖九",
+   "name_en": "Nine of Wands",
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 9,
+   "keyword": "准备",
+   "upright": "无论何种状况都能应对的状态。你已经确实做好准备加以提防，身心都充满紧张感。",
+   "reversed": "你对于事态过于乐观。逆位暗示著无法应对唐突的局面而引发混乱。有时也可解释为训诫你缺乏自觉。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "重整态势的时候/为未来做好准备的状况/提防危险",
+     "reversed": "无法顺利应对的时候/重蹈覆辙的运气/赶不上的情况"
+    }
+   }
+  },
+  {
+   "id": "ten-of-wands",
+   "name": "权杖十",
+   "name_en": "Ten of Wands",
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 10,
+   "keyword": "沉重的压力",
+   "upright": "即使已经筋疲力尽，仍无法放下负担的状况。这张牌显示的是被只有自己能背负的事物逼得喘不过气。",
+   "reversed": "你已经濒临极限。似乎希望能放下负荷，获得解脱。有时也可解释成没有责任感。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "筋疲力尽的状况/承担任务的状态/没有余裕的时候",
+     "reversed": "祸不单行的运气/一再遇上麻烦的时候/想要逃跑的情况"
+    }
+   }
+  },
+  {
+   "id": "page-of-wands",
+   "name": "权杖侍者",
+   "name_en": "Page of Wands",
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 11,
+   "keyword": "传令",
+   "upright": "显现以纯粹的双眼看着未来的状态，以忠实而坦率的态度面对愿望。暗示朝着梦想顺利迈步向前。",
+   "reversed": "在述说着希望的背后，则隐约透露出反骨精神与反复无常的态度。有时也可解释成在没有自觉的情况下，因为对他人的反抗心而采取行动。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "有干劲的状况/左右未来的机会降临的时候/干劲十足",
+     "reversed": "一头热地失控中/见异思迁而使心情不定的状态"
+    }
+   }
+  },
+  {
+   "id": "knight-of-wands",
+   "name": "权杖骑士",
+   "name_en": "Knight of Wands",
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 12,
+   "keyword": "出发",
+   "upright": "朝着新的开始，内心感到雀跃的状态。浑身充满了挑战的热情，暗示着积极采取行动。",
+   "reversed": "意料外的变化令你不知所措。由于想守护原本的容身之处，也会因此采取攻势。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "启程的时候/跳槽或调动的迹象/有不可思议的机缘",
+     "reversed": "离开现在所在处的时候/引发麻烦的迹象/只差一步的状况"
+    }
+   }
+  },
+  {
+   "id": "queen-of-wands",
+   "name": "权杖王后",
+   "name_en": "Queen of Wands",
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 13,
+   "keyword": "魅力",
+   "upright": "暗示著成为受到瞩目的焦点。内心游刃有余，就会出于热心采取行动。此外，也可解释成坦率地受到喜爱。",
+   "reversed": "自觉好的事物却朝着负面方向起作用。也显示出受到嫉妒或误解的可能性。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "可靠的运气/凝聚人望的状况/希望能力与自身相符的时候",
+     "reversed": "任性态度/没有秩序/认为自己很强的状况/内心没有余裕"
+    }
+   }
+  },
+  {
+   "id": "king-of-wands",
+   "name": "权杖国王",
+   "name_en": "King of Wands",
+   "arcana": "minor",
+   "suit": "wands",
+   "number": 14,
+   "keyword": "果敢",
+   "upright": "现在正是强大力量充满体内的时候。让周遭众人成为自己的伙伴，无论遭遇何种困难，一定都能有结果。",
+   "reversed": "无论如何都要达成目标的坚强意志，也会成为蒙受批评的火种。有时也可解释成因过于热衷而失去正常判断力的情况。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "内心游刃有余的时候/感觉到走运的运气/可确信未来的状况",
+     "reversed": "忙得不可开交的时候/手忙脚乱的危险状况"
+    }
+   }
+  },
+  {
+   "id": "ace-of-cups",
+   "name": "圣杯一",
+   "name_en": "Ace of Cups",
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 1,
+   "keyword": "情爱",
+   "upright": "爱与幸福满溢而出：内心充满爱与喜悦，情感自然地流露出来。这张牌暗示著新的感情、温柔的交流，以及能滋润心灵的开始。",
+   "reversed": "情感枯竭而无法满足：情感无法顺利流动，内心变得空虚或缺乏满足。也可能表示爱意被压抑、无法坦率表达，或期待落空。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "情感满溢的状况/新的爱情或喜悦开始/心灵获得滋润",
+     "reversed": "情感枯竭的状况/无法坦率接受爱/喜悦难以持续"
+    }
+   }
+  },
+  {
+   "id": "two-of-cups",
+   "name": "圣杯二",
+   "name_en": "Two of Cups",
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 2,
+   "keyword": "结合",
+   "upright": "两颗心互相靠近并结合：彼此的心意相通，能够以对等的姿态交流。这张牌暗示恋爱、友情、合作关系等情感上的结合。",
+   "reversed": "关系失衡而逐渐疏离：双方情感不再平衡，可能出现误解、距离、或无法坦率面对彼此的状况。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "关系顺利建立/互相理解的时候/合作关系成立",
+     "reversed": "关系失衡/误会产生/互相无法配合"
+    }
+   }
+  },
+  {
+   "id": "three-of-cups",
+   "name": "圣杯三",
+   "name_en": "Three of Cups",
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 3,
+   "keyword": "庆祝",
+   "upright": "与伙伴共享喜悦：与朋友、同伴或团体共享成功与快乐。这张牌显示互相祝福、庆贺与情感上的交流。",
+   "reversed": "沉溺欢乐而失去节制：过度沉溺于欢乐或人际应酬，导致失去节制。也可能暗示小圈子、八卦或表面热闹内心空虚。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "喜事降临/团体气氛热闹/适合庆祝的时候",
+     "reversed": "玩乐过度/人际混乱/表面热闹但内心空虚"
+    }
+   }
+  },
+  {
+   "id": "four-of-cups",
+   "name": "圣杯四",
+   "name_en": "Four of Cups",
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 4,
+   "keyword": "不满",
+   "upright": "对现况感到倦怠而停滞：内心对眼前事物失去兴趣，虽然并非没有选择，却无法感到满足。这张牌暗示倦怠、犹豫与情感上的封闭。",
+   "reversed": "重新注意到被忽略的机会：逐渐从停滞中醒来，开始注意到原本忽略的机会。也可能表示重新整理心情，愿意接受新的可能性。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "对现况感到倦怠/机会就在眼前却没有注意/停滞状态",
+     "reversed": "开始注意到新机会/从倦怠中恢复/重新评估现况"
+    }
+   }
+  },
+  {
+   "id": "five-of-cups",
+   "name": "圣杯五",
+   "name_en": "Five of Cups",
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 5,
+   "keyword": "丧失",
+   "upright": "因失去而沉浸在悲伤中：心被已经失去的事物占据，无法立刻看见仍然保留的可能性。这张牌暗示失望、遗憾与情感上的打击。",
+   "reversed": "从悲伤中回头看见希望：逐渐从悲伤中抬头，重新看见仍存在的希望。也可能表示接受失去，并开始修复情绪。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "因失去而沮丧/心情低落/只看见失败",
+     "reversed": "从悲伤中恢复/注意到仍然留下的事物/希望重新出现"
+    }
+   }
+  },
+  {
+   "id": "six-of-cups",
+   "name": "圣杯六",
+   "name_en": "Six of Cups",
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 6,
+   "keyword": "回忆",
+   "upright": "从纯真回忆中获得温暖：过去的回忆、纯真的情感或熟悉的人事物带来安慰。这张牌也暗示重逢、童年、怀念与善意。",
+   "reversed": "被过去束缚而无法前进：过度沉溺于过去，导致无法面对现在。也可能暗示幼稚、逃避现实，或旧事物成为束缚。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "过去的人事物浮现/熟悉环境带来安心/回忆影响现况",
+     "reversed": "被过去束缚/无法面对现在/旧问题重现"
+    }
+   }
+  },
+  {
+   "id": "seven-of-cups",
+   "name": "圣杯七",
+   "name_en": "Seven of Cups",
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 7,
+   "keyword": "幻想",
+   "upright": "沉浸在梦想与众多可能性中：想像力活跃，许多选项浮现眼前，但未必都能实现。这张牌暗示梦想、诱惑、迷惘与尚未具体化的愿望。",
+   "reversed": "从幻想中醒来并看清现实：从不切实际的幻想中醒来，开始看清真正可行的选择。也可能表示做出决定，停止逃避现实。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "选项很多但难以判断/梦想与诱惑混在一起/状况不明确",
+     "reversed": "现实逐渐清晰/选项被整理/幻想消散"
+    }
+   }
+  },
+  {
+   "id": "eight-of-cups",
+   "name": "圣杯八",
+   "name_en": "Eight of Cups",
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 8,
+   "keyword": "离去",
+   "upright": "离开已经不再满足自己的事物：为了寻找更深的意义，选择离开原本熟悉的环境或关系。这张牌暗示告别、转身与精神上的追寻。",
+   "reversed": "无法离开而停留在原地：明知现况无法满足自己，却仍然犹豫不前。也可能表示逃避离别、拖延决定，或无法放下。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "想离开现况/寻找更深意义/情感上已经不满足",
+     "reversed": "无法离开/犹豫不决/重复回到原点"
+    }
+   }
+  },
+  {
+   "id": "nine-of-cups",
+   "name": "圣杯九",
+   "name_en": "Nine of Cups",
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 9,
+   "keyword": "满足",
+   "upright": "愿望实现并感到满足：想望之事得到实现，内心感到喜悦与满足。这张牌暗示享受成果、幸福感与自我肯定。",
+   "reversed": "过度自满而失去真正的喜悦：表面上看似满足，内心却可能空虚。也可能表示自满、贪心或只追求个人享乐。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "愿望实现/享受成果/感到满足",
+     "reversed": "表面满足但内心空虚/自满过度/享乐失衡"
+    }
+   }
+  },
+  {
+   "id": "ten-of-cups",
+   "name": "圣杯十",
+   "name_en": "Ten of Cups",
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 10,
+   "keyword": "幸福",
+   "upright": "共享圆满而幸福的情感：情感关系达到圆满，与家人、伴侣或重要的人共享幸福。这张牌暗示安心、和谐与充满祝福的生活。",
+   "reversed": "幸福表象下出现不和：表面上看似幸福，实际上可能存在不和或失衡。也可能表示家庭压力、情感落差或期望破灭。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "家庭或团体和谐/情感圆满/幸福感提升",
+     "reversed": "表面和谐但内部不安/家庭或团体出现问题"
+    }
+   }
+  },
+  {
+   "id": "page-of-cups",
+   "name": "圣杯侍者",
+   "name_en": "Page of Cups",
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 11,
+   "keyword": "感受性",
+   "upright": "以纯真的心接受情感讯息：以柔软而纯真的心接收感情或灵感。这张牌暗示告白、讯息、创意与细腻的感受力。",
+   "reversed": "情绪幼稚而容易动摇：情绪尚未成熟，容易被气氛或幻想影响。也可能表示逃避现实、任性或不稳定的情感表达。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "情感讯息到来/新灵感出现/心情变得柔软",
+     "reversed": "情绪不稳/讯息不明确/容易被幻想影响"
+    }
+   }
+  },
+  {
+   "id": "knight-of-cups",
+   "name": "圣杯骑士",
+   "name_en": "Knight of Cups",
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 12,
+   "keyword": "浪漫",
+   "upright": "带着浪漫理想靠近目标：以温柔、理想与感情推动事情前进。这张牌暗示告白、邀约、创作灵感与浪漫的行动。",
+   "reversed": "沉溺幻想而缺乏实际行动：过度沉溺于幻想或情绪，导致缺乏现实行动。也可能表示优柔寡断、甜言蜜语或不可靠的承诺。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "邀约或提案到来/情感开始流动/浪漫气氛提升",
+     "reversed": "甜言蜜语但缺乏实际/计划停滞/情感不稳"
+    }
+   }
+  },
+  {
+   "id": "queen-of-cups",
+   "name": "圣杯王后",
+   "name_en": "Queen of Cups",
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 13,
+   "keyword": "慈爱",
+   "upright": "以慈爱与直觉接纳一切：内心柔软，能理解并包容他人的情感。这张牌暗示疗愈、共感、直觉与深层的爱。",
+   "reversed": "过度沉浸情绪而失去界线：情绪过度敏感，可能失去界线或被他人情感影响。也可能表示依赖、情绪化或逃避现实。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "需要情感照顾/直觉敏锐/适合疗愈与倾听",
+     "reversed": "情绪过度敏感/界线模糊/容易受影响"
+    }
+   }
+  },
+  {
+   "id": "king-of-cups",
+   "name": "圣杯国王",
+   "name_en": "King of Cups",
+   "arcana": "minor",
+   "suit": "cups",
+   "number": 14,
+   "keyword": "情感控制",
+   "upright": "成熟地掌控情感并给予包容：情感丰富却能冷静掌握，不被情绪吞没。这张牌暗示成熟的爱、包容、理解与情绪上的领导力。",
+   "reversed": "压抑或操控情绪而失衡：情感被压抑或以不健康方式控制。也可能表示表面冷静、内心动摇，或以情绪操控他人。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "情绪需要成熟掌控/冷静处理感情问题/以包容稳定局面",
+     "reversed": "情绪被压抑/表面冷静内心混乱/感情失衡"
+    }
+   }
+  },
+  {
+   "id": "ace-of-swords",
+   "name": "宝剑一",
+   "name_en": "Ace of Swords",
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 1,
+   "keyword": "开拓",
+   "upright": "以达成目标开辟：你正想要挑战新的事物。即使面对至今从未接触过的领域，也抱持着积极挑战的心情。",
+   "reversed": "强硬态度招致毁灭：不考虑坏处，而以自身利益为优先采取行动的状态。朝着不好的方向前进，最后可能会导致自己毁灭。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "应该采取行动的状况/下定决心面对胜负/凭一己之力达成的时候",
+     "reversed": "无法挽回的事态/遭受沉重打击/强硬的行动招致反感"
+    }
+   }
+  },
+  {
+   "id": "two-of-swords",
+   "name": "宝剑二",
+   "name_en": "Two of Swords",
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 2,
+   "keyword": "纠葛",
+   "upright": "以平静的心保持和谐：面对眼前的问题，不要勉强做出结论，而是维持现状。借由斟酌时机，就能恢复内心平静。",
+   "reversed": "只想敷衍了事而走投无路：不面对问题的本质，采取暂时应付的方式应对，会有失败的可能性。原本认定已经结束的问题也可能重新浮上台面。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "从慌张中恢复的冷静状况/问题正逐渐收尾",
+     "reversed": "走投无路的状况/有压抑感/无法认同自己的情感"
+    }
+   }
+  },
+  {
+   "id": "three-of-swords",
+   "name": "宝剑三",
+   "name_en": "Three of Swords",
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 3,
+   "keyword": "疼痛",
+   "upright": "接受事物的核心：确实理解了不想得知的事实、并非本意的状况。虽然处于失意状态，却也试图迈出步伐。",
+   "reversed": "拒绝真相而挣扎痛苦：因大受打击的事件而陷入混乱状态。由于无法接受眼前的现实，可能使得痛苦延长。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "乌云笼罩的运气/面临麻烦/受到打击",
+     "reversed": "无法正视现实/难以接受的状况/混乱而缺乏冷静"
+    }
+   }
+  },
+  {
+   "id": "four-of-swords",
+   "name": "宝剑四",
+   "name_en": "Four of Swords",
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 4,
+   "keyword": "恢复",
+   "upright": "安静休息调整态势：正位是“休养中”的表现，事物有减速的倾向。不过在这段期间也获得了思考的时间。",
+   "reversed": "做好准备再次启动：逆位是“修复完成”的表现。可认为是休息时间结束，迎向苏醒的时刻，并迈向重新启动的阶段。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "暂时停滞/需要保养或休息的时候/放松的时间",
+     "reversed": "重新启动/开始行动的运气/漫长的休息结束/体力、精神饱满"
+    }
+   }
+  },
+  {
+   "id": "five-of-swords",
+   "name": "宝剑五",
+   "name_en": "Five of Swords",
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 5,
+   "keyword": "混乱",
+   "upright": "不择手段强取豪夺：表现出不择手段也想达成目的的决心。想必不会吝于使用策略，极度狡猾而具战略性。",
+   "reversed": "重要的事物被夺走：由于出乎意料的陷阱或意外，导致失去重要事物的状态。原因或许是自己的能力不足或轻忽大意。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "争斗的漩涡中顾不了那么多的状况/不容许一丝空隙",
+     "reversed": "败战/充斥着他人恶意的状况/可能落入陷阱/危险正在接近"
+    }
+   }
+  },
+  {
+   "id": "six-of-swords",
+   "name": "宝剑六",
+   "name_en": "Six of Swords",
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 6,
+   "keyword": "中途",
+   "upright": "脱离困难状况：呈现出逐渐脱离困境。此外，船只这个象征，也表现出旅行或搬家等“移动”事项。",
+   "reversed": "倒回从前的困境：暗示著无法逃离困难状况，或是重返一度以为已经脱离的环境。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "麻烦远离的运气/脱离现况/朝好的方向前进",
+     "reversed": "被卷入麻烦的运气/不知道会怎么样/心里没底的状况"
+    }
+   }
+  },
+  {
+   "id": "seven-of-swords",
+   "name": "宝剑七",
+   "name_en": "Seven of Swords",
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 7,
+   "keyword": "背叛",
+   "upright": "偷偷摸摸地在暗地里策划：在不让任何人发现的情况下密谋诡计。有时也可解释成逃离责任以明哲保身。这是张铤而走险的牌。",
+   "reversed": "察觉危险，做好万全准备：察觉他人的恶意，提升警戒心。万全的准备奏效，事情将会安全地进行。也可解释成协助他人。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "动手做坏事/暗地里施展诡计/不法盛行的运气",
+     "reversed": "能在千钧一发之际回避危险的运气/有意想不到的发现的时候"
+    }
+   }
+  },
+  {
+   "id": "eight-of-swords",
+   "name": "宝剑八",
+   "name_en": "Eight of Swords",
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 8,
+   "keyword": "忍耐",
+   "upright": "在痛苦的状况下等待救援：隐藏着认为自己没有力量，希望他人救援的想法。当事人受到无力感与孤独感折磨，似乎寸步难行。",
+   "reversed": "在没有后援的状况下胡乱挣扎：处于孤立无援的状态下而感到焦躁。认为不应该是这样，抵抗著这状况的同时，也心怀强烈的受害者意识，认为错的是周遭的人。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "灾难的运气/受拘束的环境/来自周遭的过度干涉/受人嫉妒/受得很辛苦",
+     "reversed": "并非本意的状况/孤立/对于周遭的不满爆发的时候"
+    }
+   }
+  },
+  {
+   "id": "nine-of-swords",
+   "name": "宝剑九",
+   "name_en": "Nine of Swords",
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 9,
+   "keyword": "苦闷",
+   "upright": "无法挽回的绝望：表现出强烈的后悔，“如果那时候这么做就好了”一个劲儿地想着这件事，持续自责而看不见周围。",
+   "reversed": "不想面对糟糕的状况：从现实上别过视线，不想面对问题的本质。只将责任归咎于他人、装作没发生过，或是顾影自怜。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "处于绝望中的运气/因为悲伤而夜不成眠的状态/容易受骗的时候",
+     "reversed": "被害妄想很严重的时候/受到负面臆测束缚"
+    }
+   }
+  },
+  {
+   "id": "ten-of-swords",
+   "name": "宝剑十",
+   "name_en": "Ten of Swords",
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 10,
+   "keyword": "岔路",
+   "upright": "接受一切后前进：完全接受自己的弱点或身处状况的状态，也可说是开悟的境界。结果会让你往下一个阶段迈进。",
+   "reversed": "只往对自己好的方向看：没做好心理准备，无法接受对自己而言不好的事情。结果就是仍然无法脱离妄想世界。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "人生的岔路/接受一切疼痛的状态/开始朝着未来前进",
+     "reversed": "暂时好转的运气/无法肯定的现况/置身于对自己好的梦中"
+    }
+   }
+  },
+  {
+   "id": "page-of-swords",
+   "name": "宝剑侍者",
+   "name_en": "Page of Swords",
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 11,
+   "keyword": "警戒",
+   "upright": "看清状况小心谨慎：屏气凝神地调查周遭的情况，有时也显示需要暗中进行某事的状况。危机意识非常高。",
+   "reversed": "防备显得有些不严谨：虽然有警戒心，却突显出防守不周全的问题。比如说不小心露了光、说出不谨慎的话来。或许会因为一时大意而失去重要的事物。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "需要调查某些事物的状况/暴风雨前的宁静/面对考验",
+     "reversed": "秘密快被发现/大意会丧命的时候/力量遭到考验"
+    }
+   }
+  },
+  {
+   "id": "knight-of-swords",
+   "name": "宝剑骑士",
+   "name_en": "Knight of Swords",
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 12,
+   "keyword": "果敢",
+   "upright": "条理分明地下定决心前进：不花多余工夫，试图以最短路线朝着目标冲刺。为了做出具合理性的判断，而不会流于私情。",
+   "reversed": "招致无谓的争端：与其说是进攻，倒不如说挑衅意味浓厚，因此也会引发无谓的麻烦。似乎也有急于立功的一面。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "应该迅速采取行动的时候/面临下决定的状况/容易变化的运气",
+     "reversed": "出乎意料的变化/容易四处引发争执的状况"
+    }
+   }
+  },
+  {
+   "id": "queen-of-swords",
+   "name": "宝剑王后",
+   "name_en": "Queen of Swords",
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 13,
+   "keyword": "正确",
+   "upright": "以正确的言行举止令人敬佩：认为“应该这么做”时，就会毫不迷惘地贯彻意志。不会自命不凡，在发言时也会考虑到他人处境，因此能获得周遭的赞同。",
+   "reversed": "为了自我防卫的武装：只为了保护自己而使用锋利的才智。对于伤害自己的事物会毫不留情地攻击，对于人情也十分冷淡。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "聪明地采取行动的运气/想贯彻意志的冲动/只看着现实",
+     "reversed": "在某些事情上做过头/容易陷入歇斯底里/防卫过度"
+    }
+   }
+  },
+  {
+   "id": "king-of-swords",
+   "name": "宝剑国王",
+   "name_en": "King of Swords",
+   "arcana": "minor",
+   "suit": "swords",
+   "number": 14,
+   "keyword": "严格",
+   "upright": "以客观的分析作判断：无论何种场合都会客观地看清状况，做出恰当的判断。总是要求自身保持公正，不可流于自私自利。",
+   "reversed": "独裁地守护威严：所拥有的智慧只会用于保护自己的状态。甚至会残酷地排除不顺应心意的人，不承认自己的过错。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "充满自信的状态/考虑该下决定采取行动的运气/克服混乱",
+     "reversed": "严峻的状况/不受人敬慕而孤立/有做出偏离正轨行为的倾向"
+    }
+   }
+  },
+  {
+   "id": "ace-of-pentacles",
+   "name": "星币一",
+   "name_en": "Ace of Pentacles",
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 1,
+   "keyword": "实力",
+   "upright": "发挥力量获得丰饶：你拥有足以实现愿望的确实力量。至今为止的努力将获得回报。也可能获得财富或名声。",
+   "reversed": "以利益为优先，使努力化为泡影：暗示著满脑子只考虑利益，而没采取适当的行动。此外，也有长时间构筑起来的重要人脉崩毁的可能性。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "成功/实行计划/有临时收入/再次开始",
+     "reversed": "对财务上感到不安/错误的开始/准备不足"
+    }
+   }
+  },
+  {
+   "id": "two-of-pentacles",
+   "name": "星币二",
+   "name_en": "Two of Pentacles",
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 2,
+   "keyword": "柔软度",
+   "upright": "掌握状况采取正确行动：面对眼前的事情临机应变地处理。呈现出事物以好的态势顺利地开始进行。",
+   "reversed": "无法应对状况而吃尽苦头：无法应对新的变化而感到痛苦的状态。此外也表现出无法与周遭相处融洽而感到不安。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "灵巧地处理/能够同时处理好两件事/做着擅长的事情",
+     "reversed": "平衡不佳的状况/生活紊乱/肩负着各式各样的事情"
+    }
+   }
+  },
+  {
+   "id": "three-of-pentacles",
+   "name": "星币三",
+   "name_en": "Three of Pentacles",
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 3,
+   "keyword": "技术力",
+   "upright": "培养的力量获得评价：至今为止脚踏实地处理的事情似乎获得了许多人的认同。此外，也有尚未公诸于世的才华受到瞩目的意思。",
+   "reversed": "拥有的力量未获得评价：明明拥有实力却迟迟不受周遭评价的状态。抑或表现出实力尚有不足的情况。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "受到提拔与周遭合作/活用经验/计划性地进行",
+     "reversed": "时机尚未成熟/还有该做的事情/容易犯错"
+    }
+   }
+  },
+  {
+   "id": "four-of-pentacles",
+   "name": "星币四",
+   "name_en": "Four of Pentacles",
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 4,
+   "keyword": "占有欲",
+   "upright": "以稳定的利益为优先：为了避免失败而谨慎采取行动的状态。虽然稳健，却也可以说是对事物的执念。",
+   "reversed": "变得贪婪而迷失自我：总是以利益为优先，很有可能做出错的行动。此外也代表对金钱的吝啬态度。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "稳定的运气/担心自己的所有物被抢夺而提心吊胆/执著于利益",
+     "reversed": "发生障碍的运气/计划落空的状况/被贪婪的人利用的时候"
+    }
+   }
+  },
+  {
+   "id": "five-of-pentacles",
+   "name": "星币五",
+   "name_en": "Five of Pentacles",
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 5,
+   "keyword": "困难",
+   "upright": "因痛苦的状况导致精神上的荒废：呈现状况逐渐恶化的状态。因为孤立无援而心情沉重，变得封闭。散发着需要救赎的悲壮感。",
+   "reversed": "由于救援而取回希望：至今为止的惨况会逐渐获得改善。有人向你伸出援手，使得心情也开朗起来。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "困难阻挡在前方的运气/没有救赎的时候/有财务上的烦恼",
+     "reversed": "战胜困难的运气/获得救赎的时候/取回希望"
+    }
+   }
+  },
+  {
+   "id": "six-of-pentacles",
+   "name": "星币六",
+   "name_en": "Six of Pentacles",
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 6,
+   "keyword": "关联性",
+   "upright": "提出善意者与接受者的关联：这基于“想给予某人某些事物”的心情。或许对方也正等待着某些行动也说不定。",
+   "reversed": "支配者与受支配者的关联：表现出想支配对方的心情的状态。也可解释成萌生想束缚喜欢对象的心情。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "内心游刃有余的时期/借由给予他人而获得机会/深思熟虑的时候",
+     "reversed": "受到不合理对待/涌现对权力的欲望/待人方面的烦恼浮上台面"
+    }
+   }
+  },
+  {
+   "id": "seven-of-pentacles",
+   "name": "星币七",
+   "name_en": "Seven of Pentacles",
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 7,
+   "keyword": "成长",
+   "upright": "改善问题，迈向下个阶段：表现出重新检视的必要。想法、计划、匠心……如果能找出改善之处，就可能朝下一个阶段迈进。",
+   "reversed": "怀着不安，漫不经心地度过：或许对自己评价过高了。也可解释成漫不经心地处理事情，但热忱或所下的工夫不足。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "重新审视状况/立足于结果上放眼将来的时候/寻找下一个目标",
+     "reversed": "逐渐衰退的运气/无法脱离现状/没有计划而烦闷"
+    }
+   }
+  },
+  {
+   "id": "eight-of-pentacles",
+   "name": "星币八",
+   "name_en": "Eight of Pentacles",
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 8,
+   "keyword": "修行",
+   "upright": "专心处理眼前的事情：专注力高。借由朝着目标埋头努力，而学会确实的技能，一步步朝着成功迈进。",
+   "reversed": "无法专注于眼前的事情上：各式各样的阻挠导致注意力涣散的状态。看似认真在做，其实或许在混水摸鱼。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "磨练自我的运气/应该专注于眼前的事情/绝不妥协，贯彻到底的时期",
+     "reversed": "停滞的运气/容易错过时机/杂念过多/无法专注"
+    }
+   }
+  },
+  {
+   "id": "nine-of-pentacles",
+   "name": "星币九",
+   "name_en": "Nine of Pentacles",
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 9,
+   "keyword": "达成",
+   "upright": "受到提拔而成功：显示出借由周遭的提拔而掌握了成功。也会伴随着独立或获得确实的位置等报酬。",
+   "reversed": "以谎言或造假谋取成功：暗示著试图借由造假或谎言掌握成功。结果可能会导致被周遭放弃、孤立。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "幸运降临的运气/更上一层楼的时候/获得意想不到的援助",
+     "reversed": "谎言泛滥的运气/被坏念头牵引的倾向/被人放弃的状态"
+    }
+   }
+  },
+  {
+   "id": "ten-of-pentacles",
+   "name": "星币十",
+   "name_en": "Ten of Pentacles",
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 10,
+   "keyword": "继承",
+   "upright": "以继承的事物维持稳定繁荣：借由继承遗产增加财富，透过某人传承的技能获得成功，变得愈来愈富裕的状态。",
+   "reversed": "继承的事物面临极限：呈现继承的事物没能充分发挥效用、甚至引发争端，化为负面资产的状态。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "由于继承某些事物而发展的运气/应当重视传统文化的状况",
+     "reversed": "由于继承某些事物而引发争端/被迫承担重任的状况"
+    }
+   }
+  },
+  {
+   "id": "page-of-pentacles",
+   "name": "星币侍者",
+   "name_en": "Page of Pentacles",
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 11,
+   "keyword": "诚挚",
+   "upright": "花时间累积：你正在踏实地面对某些事物吧。这张牌暗示的是此时花费的时间，将会在日后大大派上用场。",
+   "reversed": "尽是浪费时间：表现出尽是在无谓地浪费时间。似乎需要稍微加快脚步或是改善做法。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "努力的时候/学习某些事物的时候/现在累积的事物会在日后成为强项",
+     "reversed": "经常浪费的运气/略显逃避现实/容易拖延该做的事情的时候"
+    }
+   }
+  },
+  {
+   "id": "knight-of-pentacles",
+   "name": "星币骑士",
+   "name_en": "Knight of Pentacles",
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 12,
+   "keyword": "现实性",
+   "upright": "贯彻始终：你似乎能将目前处理的事务坚持到最后一刻。有时也可解释成需要忍耐力与责任感的意思。",
+   "reversed": "以维持现状告终：防守意识过强，而没有什么好的变化。正在处理的事情或许会不知不觉间变成惯性。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "踏实前进的运气/应该专注于一件事情上的时候/需要努力的状况",
+     "reversed": "停滞状态的运气/迟迟没有进展的状况/有喋喋不休的倾向的时候"
+    }
+   }
+  },
+  {
+   "id": "queen-of-pentacles",
+   "name": "星币王后",
+   "name_en": "Queen of Pentacles",
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 13,
+   "keyword": "宽容",
+   "upright": "借由培育，自己也得以成长：感觉到为了某人而尽力的喜悦。不只影响对方，也会给自己带来好的影响，创造出坚强。",
+   "reversed": "姑息宠溺只会毁灭彼此：照单全收会造成反效果。自己一味地尽心尽力会使对方变得依赖，而变成一同堕落的状态。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "稳定的运气/构筑某些事物的时候/培育人才的时候/舒适的状态",
+     "reversed": "没有发展的运气/对其他事忙不过来/不得要领的状态"
+    }
+   }
+  },
+  {
+   "id": "king-of-pentacles",
+   "name": "星币国王",
+   "name_en": "King of Pentacles",
+   "arcana": "minor",
+   "suit": "pentacles",
+   "number": 14,
+   "keyword": "贡献",
+   "upright": "试图让自己的力量派上用场：顺利地运用着自身的力量。希望以自己办得到的事帮上他人的忙，或是置身于这样的立场上。",
+   "reversed": "没有善加活用自己的力量：没有将自身力量发挥到百分之百的状态。没有灵活运用财富或能力，并未达成受周遭期待的职责。",
+   "aspects": {
+    "currentSituation": {
+     "upright": "似乎能交出成绩单的状况/应该别着急，注意细节的运气/财运提升",
+     "reversed": "不满足的状况/不谙世事/有挥霍或拖延的倾向"
+    }
+   }
+  }
+ ]
+}
