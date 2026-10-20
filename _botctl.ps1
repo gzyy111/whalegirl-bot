@@ -5,6 +5,8 @@
 
 # 鲸鱼娘机器人 - 本地启动/停止/状态 控制脚本
 # 路径全部基于脚本自身目录（%~dp0 等价物），可整体搬移。
+# 2026-10-20：启动后校验 success / 微信是否真的 connected，失败自动重试一次，
+#             并把真实原因打出来（原来不看返回值，没起来也显示"已发送"）。
 
 $ErrorActionPreference = 'Continue'
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -16,7 +18,6 @@ $api = 'http://127.0.0.1:8080/api'
 $web = 'http://127.0.0.1:8080/'
 
 function Pause-IfInteractive([string]$message) {
-    # 双击运行时停下来给用户看结果；被脚本/自动化调用时不阻塞。
     if (-not [Console]::IsInputRedirected) { Read-Host $message | Out-Null }
 }
 
@@ -86,6 +87,42 @@ function Show-Status {
         Write-Host '  Web 控制台 : 未运行'
     }
     Write-Host '──────────────────────────' -ForegroundColor Cyan
+}
+
+function Invoke-StartBot {
+    # 返回 $true 表示：接口 success 且微信通道真的 connected
+    for ($attempt = 1; $attempt -le 2; $attempt++) {
+        $resp = $null
+        try {
+            $resp = Invoke-RestMethod -Method Post -Uri "$api/bot/start" `
+                -ContentType 'application/json' -Body '{}' -TimeoutSec 180
+        } catch {
+            Write-Host ('      启动请求失败: ' + $_.Exception.Message) -ForegroundColor Red
+        }
+
+        if ($resp -and $resp.success) {
+            Write-Host '      接口返回成功，正在等待微信通道连接...'
+            for ($i = 1; $i -le 15; $i++) {
+                Start-Sleep -Seconds 2
+                try {
+                    $st = Get-StatusJson
+                    if ($st.running -and $st.wechat.status -eq 'connected') {
+                        Write-Host '      微信通道已连接，开始监听。' -ForegroundColor Green
+                        return $true
+                    }
+                } catch {}
+            }
+            Write-Host '      [警告] 30 秒内没连上微信，请看 logs\chatbot.log' -ForegroundColor Yellow
+        } elseif ($resp) {
+            Write-Host ('      未启动：{0}' -f $resp.message) -ForegroundColor Yellow
+        }
+
+        if ($attempt -lt 2) {
+            Write-Host '      4 秒后重试一次...'
+            Start-Sleep -Seconds 4
+        }
+    }
+    return $false
 }
 
 switch ($Action) {
@@ -158,13 +195,16 @@ switch ($Action) {
         }
 
         Write-Host '[2/2] 拉起机器人（连接微信 + 开始监听）...'
-        try {
-            $s = Invoke-RestMethod -Method Post -Uri "$api/bot/start" `
-                -ContentType 'application/json' -Body '{}' -TimeoutSec 180
-            # 不直接打印 $s.message：PowerShell 5.1 对 UTF-8 JSON 会输出乱码
-            Write-Host '      启动指令已发送，机器人正在连接微信。'
-        } catch {
-            Write-Host ('      [错误] 启动失败: ' + $_.Exception.Message) -ForegroundColor Red
+        $ok = Invoke-StartBot
+        if (-not $ok) {
+            Write-Host ''
+            Write-Host '  [错误] 机器人没有启动成功。常见原因：' -ForegroundColor Red
+            Write-Host '    · 微信没登录 / 主窗口被最小化（要保持可见）' -ForegroundColor Red
+            Write-Host '    · 微信刚重启，UIA 树需要热激活（脚本已尝试，可手动跑 _probe_uia.py）' -ForegroundColor Red
+            Write-Host '    · 上一次实例没退干净：先运行 停止-鲸鱼娘.bat 再启动' -ForegroundColor Red
+            Show-Status
+            Pause-IfInteractive '按回车退出'
+            exit 1
         }
 
         Show-Status

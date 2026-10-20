@@ -13,6 +13,7 @@ from __future__ import annotations
 import asyncio
 import sys
 import tempfile
+import time
 import types
 from pathlib import Path
 
@@ -94,6 +95,7 @@ def make(tmp: str, **kw) -> CatchupService:
     # 归档也放临时目录，避免读到仓库里的真实消息。
     kw.setdefault("min_offline_minutes", 0)
     kw.setdefault("archive_path", str(Path(tmp) / "archive.jsonl"))
+    kw.setdefault("pending_path", str(Path(tmp) / "pending.json"))
     return CatchupService(
         wechat=kw.pop("wechat", StubWeChat()),
         ai=kw.pop("ai", StubAI("呜……才睡了一觉就攒了这么多，本鲸鱼娘缓一下就来。")),
@@ -253,7 +255,7 @@ async def case_threshold() -> None:
 
 
 async def case_offline_gate() -> None:
-    print("\n[7] 快速重启不补（min_offline_minutes）")
+    print("\n[7] 启动间隔闸门（min_offline_minutes）")
     with tempfile.TemporaryDirectory() as tmp:
         wx = StubWeChat()
         svc = make(tmp, wechat=wx, min_offline_minutes=60)   # 首次运行：没历史，允许
@@ -261,18 +263,28 @@ async def case_offline_gate() -> None:
         await svc.flush()
         check("首次运行会补", len(wx.sent) == 1, str(wx.sent))
 
+        # 新规则：停机期间有人叫她，重启后必须应一声（不受闸门限制）
         wx2 = StubWeChat()
-        svc2 = make(tmp, wechat=wx2, min_offline_minutes=60)  # 立刻重启：应被闸门挡住
-        svc2.note(msg("@大肥鱼 在吗", is_at_me=True))
-        results = await svc2.flush()
-        check("几分钟内重启不补", wx2.sent == [] and results == [], str(wx2.sent))
+        svc2 = make(tmp, wechat=wx2, min_offline_minutes=60)
+        svc2.note(msg("@大肥鱼 人呢", is_at_me=True))
+        results2 = await svc2.flush()
+        check("几分钟内重启但有 @ -> 仍然必接", len(wx2.sent) == 1, str(wx2.sent))
         check("闸门状态可见", svc2._eligible is False)
 
+        # 没人叫的闲聊才受闸门限制
         wx3 = StubWeChat()
-        svc3 = make(tmp + "/free", wechat=wx3, min_offline_minutes=0)
-        svc3.note(msg("@大肥鱼 在吗", is_at_me=True))
+        svc3 = make(tmp, wechat=wx3, min_offline_minutes=60)
+        for text in ("今天好热", "空调坏了", "谁来修一下"):
+            svc3.note(msg(text, sender="甲"))
         await svc3.flush()
-        check("阈值 0 时每次都补", len(wx3.sent) == 1, str(wx3.sent))
+        check("几分钟内重启、只是闲聊 -> 不冒泡", wx3.sent == [], str(wx3.sent))
+
+        wx4 = StubWeChat()
+        svc4 = make(tmp + "/free", wechat=wx4, min_offline_minutes=0)
+        for text in ("今天好热", "空调坏了", "谁来修一下"):
+            svc4.note(msg(text, sender="甲"))
+        await svc4.flush()
+        check("阈值 0 时闲聊也补", len(wx4.sent) == 1, str(wx4.sent))
 
 
 async def case_seen_live() -> None:
@@ -313,6 +325,37 @@ async def case_seen_live() -> None:
         check("归档里只索引了 1 条", len(svc._seen_live) == 1, str(len(svc._seen_live)))
 
 
+async def case_pending_persist() -> None:
+    print("\n[9] 被闸门跳过的消息不丢，下次接着补")
+    with tempfile.TemporaryDirectory() as tmp:
+        # 预置状态：刚启动过 1 分钟，触发「间隔不足」闸门
+        import json as _json
+
+        (Path(tmp) / "catchup_state.json").write_text(
+            _json.dumps({"acked": {}, "last_start": time.time() - 60, "last_flush": 0}),
+            encoding="utf-8",
+        )
+        wx = StubWeChat()
+        svc = make(tmp, wechat=wx, min_offline_minutes=60)
+        for text in ("今天好热", "空调坏了", "谁来修一下"):
+            svc.note(msg(text, sender="甲"))
+        await svc.flush()
+        check("本次不冒泡", wx.sent == [], str(wx.sent))
+        pending_file = Path(tmp) / "pending.json"
+        check("但落盘了", pending_file.is_file())
+        if pending_file.is_file():
+            data = __import__("json").loads(pending_file.read_text(encoding="utf-8"))
+            check("落了 3 条", len(data.get("items", [])) == 3, str(len(data.get("items", []))))
+
+        # 下次启动：闸门放开 -> 把上次没发出去的补上
+        wx2 = StubWeChat()
+        svc2 = make(tmp, wechat=wx2, min_offline_minutes=0)
+        check("启动时恢复待补队列", svc2.pending().get("示例群") == 3, str(svc2.pending()))
+        await svc2.flush()
+        check("补发出去了", len(wx2.sent) == 1, str(wx2.sent))
+        check("补完清掉落盘", not pending_file.is_file())
+
+
 async def main() -> int:
     await case_collect()
     await case_one_sentence()
@@ -322,6 +365,7 @@ async def main() -> int:
     await case_threshold()
     await case_offline_gate()
     await case_seen_live()
+    await case_pending_persist()
     print(f"\n结果：{PASS} 通过 / {FAIL} 失败")
     return 0 if FAIL == 0 else 1
 

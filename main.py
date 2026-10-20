@@ -379,6 +379,9 @@ class ChatBot:
             archive_path=str(
                 raw.get("archive_path", "./data/message_archive.jsonl")
             ),
+            pending_path=str(
+                raw.get("pending_path", "./data/catchup_pending.json")
+            ),
             skip_seen_live=bool(raw.get("skip_seen_live", True)),
             dry_run=bool(raw.get("dry_run", False)),
         )
@@ -538,13 +541,13 @@ class ChatBot:
             script=str(
                 cover_cfg.get(
                     "script",
-                    r"D:\鲸鱼娘SVC翻唱"
+                    r"D:\\鲸鱼娘SVC翻唱_20261017"
                     r"\cover.py")
             ),
             work_dir=str(
                 cover_cfg.get(
                     "work_dir",
-                    r"D:\鲸鱼娘SVC翻唱")
+                    r"D:\\鲸鱼娘SVC翻唱_20261017")
             ),
             cache_dir=str(cover_cfg.get("cache_dir", "./data/song_cache/cover")),
             library_dirs=[

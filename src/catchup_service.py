@@ -85,6 +85,7 @@ class CatchupService:
 
     MAX_ACKED = 800          # 记账上限，超出按时间淘汰
     ACK_TTL = 7 * 86400      # 记账有效期（7 天）
+    PENDING_TTL = 48 * 3600  # 没发出去的消息最多留 48 小时
     MAX_ARCHIVE_BYTES = 8 * 1024 * 1024   # 读归档只读末尾这么多
 
     def __init__(
@@ -103,6 +104,7 @@ class CatchupService:
         delay_after_connect: float = 9.0,
         state_path: str = "data/catchup_state.json",
         archive_path: str = "data/message_archive.jsonl",
+        pending_path: str = "data/catchup_pending.json",
         skip_seen_live: bool = True,
         dry_run: bool = False,
     ) -> None:
@@ -119,6 +121,7 @@ class CatchupService:
         self.delay_after_connect = max(0.0, float(delay_after_connect))
         self.state_path = Path(state_path)
         self.archive_path = Path(archive_path)
+        self.pending_path = Path(pending_path)
         self.skip_seen_live = bool(skip_seen_live)
         self.dry_run = bool(dry_run)
 
@@ -132,6 +135,7 @@ class CatchupService:
         self._load_state()
         if self.skip_seen_live:
             self._load_seen_live()
+        self._load_pending()
         # 判定这次启动算不算「睡了一觉回来」，并立刻刷新「上次存活时间」，
         # 这样同一天里再重启一次不会重复补消息。
         self._eligible = self._check_eligible()
@@ -198,6 +202,90 @@ class CatchupService:
             )
         except Exception as exc:
             logger.warning(f"[开机补消息] 保存状态失败: {exc}")
+
+    # ── 没发出去的，落盘等下次 ──────────────────────────────
+    def _load_pending(self) -> None:
+        """把上次没发出去的消息接回来。
+
+        为什么需要：回放窗口里的消息只会在启动那一次被推过来。如果这次因为
+        「启动间隔太短」被闸门挡掉，内存里的东西一清就永远没了。落盘后下次
+        启动还能补上。
+        """
+        try:
+            if not self.pending_path.is_file():
+                return
+            data = json.loads(self.pending_path.read_text(encoding="utf-8"))
+            now = time.time()
+            restored = 0
+            for rec in data.get("items", []):
+                try:
+                    saved_at = float(rec.get("saved_at") or 0)
+                    if now - saved_at > self.PENDING_TTL:
+                        continue
+                    room = str(rec.get("room") or "")
+                    content = str(rec.get("content") or "")
+                    if not room or not content:
+                        continue
+                    item = _Missed(
+                        room=room,
+                        sender=str(rec.get("sender") or ""),
+                        content=content,
+                        key=str(rec.get("key") or ""),
+                        at_me=bool(rec.get("at_me")),
+                        poke=bool(rec.get("poke")),
+                        private=bool(rec.get("private")),
+                    )
+                    if not item.key:
+                        item.key = self._key(room, item.sender, content)
+                    if item.key in self._acked:
+                        continue
+                    bucket = self._missed.setdefault(room, [])
+                    if any(x.key == item.key for x in bucket):
+                        continue
+                    bucket.append(item)
+                    restored += 1
+                except Exception:
+                    continue
+            if restored:
+                logger.info(f"[开机补消息] 恢复上次没发出去的 {restored} 条")
+        except Exception as exc:
+            logger.debug(f"[开机补消息] 读取待补队列失败（忽略）: {exc}")
+
+    def _save_pending(self) -> None:
+        """把仍在队列里、尚未确认发出的消息写盘。"""
+        now = time.time()
+        items = []
+        for bucket in self._missed.values():
+            for item in bucket:
+                if item.key in self._acked:
+                    continue
+                items.append(
+                    {
+                        "room": item.room,
+                        "sender": item.sender,
+                        "content": item.content,
+                        "key": item.key,
+                        "at_me": item.at_me,
+                        "poke": item.poke,
+                        "private": item.private,
+                        "saved_at": now,
+                    }
+                )
+        try:
+            if not items:
+                if self.pending_path.is_file():
+                    self.pending_path.unlink()
+                return
+            self.pending_path.parent.mkdir(parents=True, exist_ok=True)
+            payload = {
+                "items": items,
+                "saved_at": datetime.now().isoformat(timespec="seconds"),
+            }
+            self.pending_path.write_text(
+                json.dumps(payload, ensure_ascii=False), encoding="utf-8"
+            )
+        except Exception as exc:
+            logger.warning(f"[开机补消息] 保存待补队列失败: {exc}")
 
     # ── 收集 ────────────────────────────────────────────────
     def _load_seen_live(self) -> None:
@@ -383,11 +471,14 @@ class CatchupService:
         return self._fallback(items)
 
     async def flush(self) -> list[dict]:
-        """把攒下的消息一次性接住；返回每个会话的处理结果。"""
+        """把攒下的消息一次性接住；返回每个会话的处理结果。
+
+        判定分两种：
+        * 有人 @ 她 / 拍一拍 / 私聊 —— **无条件接**，不受启动间隔闸门限制
+          （停机期间有人叫她，起来必须应一声，否则就是"装死"）；
+        * 群里没人叫 —— 要同时满足「距上次启动够久」与「攒够 min_messages」。
+        """
         if not self.enabled or self._running:
-            return []
-        if not self._eligible:
-            self._missed.clear()
             return []
         rooms = [room for room, items in self._missed.items() if items]
         if not rooms:
@@ -404,15 +495,23 @@ class CatchupService:
                     logger.debug(f"[开机补消息] {room} 的消息此前已接过，跳过")
                     continue
 
-                # 有人 @ 她 / 拍一拍 / 私聊找她 -> 必接；
-                # 群里没人叫她 -> 攒够 min_messages 再冒泡
+                # 有人 @ 她 / 拍一拍 / 私聊找她 -> 无条件必接；
+                # 群里没人叫她 -> 既要启动间隔够久，也要攒够 min_messages
                 called = any(i.at_me or i.poke or i.private for i in items)
-                if not called and len(items) < self.min_messages:
-                    logger.info(
-                        f"[开机补消息] {room} 只有 {len(items)} 条且没人叫她，"
-                        f"这次不冒泡（阈值 {self.min_messages}）"
-                    )
-                    continue
+                if not called:
+                    if not self._eligible:
+                        logger.info(
+                            f"[开机补消息] {room} 没人叫她，且距上次启动只有 "
+                            f"{self._offline_minutes:.0f} 分钟（阈值 "
+                            f"{self.min_offline_minutes:.0f}），本次不冒泡"
+                        )
+                        continue
+                    if len(items) < self.min_messages:
+                        logger.info(
+                            f"[开机补消息] {room} 只有 {len(items)} 条且没人叫她，"
+                            f"这次不冒泡（阈值 {self.min_messages}）"
+                        )
+                        continue
 
                 text = await self._compose(items)
                 if not text:
@@ -433,6 +532,7 @@ class CatchupService:
                     for item in items:
                         self._acked[item.key] = now
                     self._last_flush = now
+                    self._last_start = now      # 真补过，闸门从这一刻重新计时
 
                 results.append(
                     {"room": room, "count": len(items), "text": text, "ok": ok}
@@ -447,5 +547,7 @@ class CatchupService:
             self._save_state()
         finally:
             self._running = False
+            # 没发出去的（被闸门跳过 / 发送失败）落盘，下次启动还能补
+            self._save_pending()
             self._missed.clear()
         return results
