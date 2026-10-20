@@ -55,8 +55,8 @@
 | 项目 | 处理 |
 |---|---|
 | 群名 | 真实群名 → 「示例群」 |
-| 群的 chatroom id | `47793136455@chatroom` → `12345678@chatroom` |
-| 本机绝对路径 | `D:\BaiduNetdiskDownload\harness\deepseekgirl` → `D:\鲸鱼娘` |
+| 群的 chatroom id | 真实 id → `12345678@chatroom` |
+| 本机绝对路径 | 真实安装路径 → `D:\鲸鱼娘`；用户名 → `本人` |
 | 运行期数据 | `data/*`、`logs/*` 全部 gitignore |
 | API Key / 密钥 | `config.yaml` 不收；模板里只有占位符 `sk-your-api-key-here` |
 | 聊天截图与 OCR 文本 | `_chat_screenshots_ocr.txt`、`_scan_screenshot_out.txt`、`_test_*_out.txt` 等全部不收 |

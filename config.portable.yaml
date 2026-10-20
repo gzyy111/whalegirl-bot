@@ -9,6 +9,17 @@ wechat:
     - "在此填写你要监控的群名"
   auto_reply: true
   reply_delay: 1.5
+  catchup:                     # 开机时把睡着时收到的消息用一句话接住
+    enabled: true
+    only_at_me: false          # true = 只补 @ 她和拍一拍
+    include_private: true
+    min_messages: 3            # 没人叫她时，攒够几条才冒泡
+    min_offline_minutes: 60    # 距上次运行不到这么久就不补（防手动重启刷屏）
+    max_messages: 40
+    max_groups: 3
+    max_chars: 60
+    delay_after_connect: 9.0
+    state_path: ./data/catchup_state.json
   sticker:
     enabled: true
     min_interval: 600

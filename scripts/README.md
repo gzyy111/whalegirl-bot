@@ -15,6 +15,8 @@
 | `_test_named_sticker.py` | 表情包「点名挑图」触发判定与标签硬条件 |
 | `_test_repeat.py` | 连续追问的去重/间隔逻辑 |
 | `_test_meme_lines.py` | 梗图台词索引回归 |
+| `_test_catchup.py` | **开机补消息** 34 项：收集规则、一句化、三层去重、兜底话术、冒泡阈值、启动间隔闸门、在线已收过滤 |
+| `_test_catchup_wiring.py` | **开机补消息接线** 12 项：走 `main.py` 真实 `_on_message` / `_schedule_catchup`，确认钩子接对且新消息不被吃掉 |
 | `_sim_input.py` | **零输出的全链路模拟**：真实 `ChatBot.initialize()` + 真实服务，但把 `handler.wechat` 换成只记录不发送的 `RecordingBridge`，直接喂消息给 `_handle_message`，能看出命中了哪条快路径 |
 | `_build_tarot_data.py` | 从 npm `@cometpisces/tarot-kit` 的原始 JSON 重建 `src/divination/tarot_data.json`（繁转简、译名对齐） |
 | `_build_tarot_images.py` | 从 npm `tarot-kit-images` 的 `images` 目录重建 `塔罗牌/images/` 与 `tags.json` |

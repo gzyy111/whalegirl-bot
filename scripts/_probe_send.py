@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import asyncio, io, os, sys
 from collections import Counter
 from pathlib import Path
@@ -71,10 +71,10 @@ async def main():
         ("给我来张泳装", []),
         ("发个躺着的", []),
         ("发个表情包", []),
-        ("发个表情包", [{"role": "user", "content": "赵阳阳: 今天加班到现在，好累"}]),
-        ("发个表情包", [{"role": "user", "content": "赵阳阳: 哈哈哈笑死我了"},
+        ("发个表情包", [{"role": "user", "content": "本人: 今天加班到现在，好累"}]),
+        ("发个表情包", [{"role": "user", "content": "本人: 哈哈哈笑死我了"},
                        {"role": "assistant", "content": "笑点这么低"},
-                       {"role": "user", "content": "赵阳阳: 快发个表情包"}]),
+                       {"role": "user", "content": "本人: 快发个表情包"}]),
     ]:
         h, sent, ok, log = await run(text, ctx_msgs)
         rec = v2(sent[0]) if sent else {}

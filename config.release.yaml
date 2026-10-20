@@ -58,6 +58,18 @@ wechat:
   auto_reply: true
   auto_start: true
   backend: auto
+  catchup:
+    delay_after_connect: 9.0
+    dry_run: false
+    enabled: true
+    include_private: true
+    max_chars: 60
+    max_groups: 3
+    max_messages: 40
+    min_messages: 3
+    min_offline_minutes: 60
+    only_at_me: false
+    state_path: ./data/catchup_state.json
   computer_issue_timeout: 8
   computer_max_tokens: 600
   context_file: ./data/conversation_contexts.json

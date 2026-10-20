@@ -29,6 +29,7 @@ from src.song_service import SongService
 from src.cover_service import CoverService
 from src.divination_service import DivinationService
 from src.joke_service import JokeService
+from src.catchup_service import CatchupService
 from src.singing_service import SingingService
 from src.acestep_service import ACEStepService
 from src.music_provider import LXMusicProvider
@@ -345,6 +346,88 @@ class ChatBot:
         )
 
     # ------------------------------------------------------------------
+    # 开机补消息
+    # ------------------------------------------------------------------
+    def _setup_catchup(self, wx_cfg: dict) -> None:
+        """开机补消息：把睡着时攒下的 @ / 私聊用一句话接住。
+
+        历史回放（``is_history=True``）里的消息本来只归档、不回复，避免一开机
+        就把昨天的话全回一遍。副作用是昨晚 @ 她的话一条都没接，群里像没人。
+        这里挑出「确实在找她」的那部分，回放窗口结束后**每个会话只发一句**。
+        """
+        raw = wx_cfg.get("catchup", {}) or {}
+        if not isinstance(raw, dict):
+            raw = {}
+        replay = float(wx_cfg.get("replay_grace_seconds", 6.0) or 0.0)
+        self.catchup = CatchupService(
+            wechat=self.wechat,
+            ai=self.ai,
+            enabled=bool(raw.get("enabled", True)),
+            only_at_me=bool(raw.get("only_at_me", False)),
+            include_private=bool(raw.get("include_private", True)),
+            max_messages=int(raw.get("max_messages", 40) or 40),
+            max_groups=int(raw.get("max_groups", 3) or 3),
+            max_chars=int(raw.get("max_chars", 60) or 60),
+            min_messages=int(raw.get("min_messages", 3) or 1),
+            min_offline_minutes=float(
+                raw.get("min_offline_minutes", 60) or 0.0
+            ),
+            delay_after_connect=float(
+                raw.get("delay_after_connect", replay + 3.0)
+            ),
+            state_path=str(raw.get("state_path", "./data/catchup_state.json")),
+            archive_path=str(
+                raw.get("archive_path", "./data/message_archive.jsonl")
+            ),
+            skip_seen_live=bool(raw.get("skip_seen_live", True)),
+            dry_run=bool(raw.get("dry_run", False)),
+        )
+        logger.info(
+            "[开机补消息] %s：只收@%s，私聊%s，最多 %d 个会话 / %d 条，"
+            "没人叫时攒够 %d 条才冒泡，间隔 %.0f 分钟以上才补，"
+            "回放结束后 %.0f 秒处理"
+            % (
+                "启用" if self.catchup.enabled else "关闭",
+                "是" if self.catchup.only_at_me else "否(全收)",
+                "收" if self.catchup.include_private else "不收",
+                self.catchup.max_groups,
+                self.catchup.max_messages,
+                self.catchup.min_messages,
+                self.catchup.min_offline_minutes,
+                self.catchup.delay_after_connect,
+            )
+        )
+
+    def _schedule_catchup(self) -> None:
+        """微信连上后，等历史回放窗口结束，再补一次「睡着时收到的消息」。"""
+        service = getattr(self, "catchup", None)
+        if not service or not service.enabled:
+            return
+        running = getattr(self, "_catchup_task", None)
+        if running and not running.done():
+            return
+
+        async def _run() -> None:
+            await asyncio.sleep(service.delay_after_connect)
+            try:
+                results = await service.flush()
+            except Exception as exc:
+                logger.warning(f"[开机补消息] 处理失败: {exc}")
+                return
+            if results:
+                total = sum(int(item.get("count", 0)) for item in results)
+                logger.info(
+                    f"[开机补消息] 完成：{len(results)} 个会话 / {total} 条"
+                )
+
+        try:
+            self._catchup_task = asyncio.create_task(
+                _run(), name="catchup-after-replay"
+            )
+        except RuntimeError as exc:
+            logger.warning(f"[开机补消息] 无法创建任务: {exc}")
+
+    # ------------------------------------------------------------------
     # 语音 / 点歌（双端共用）
     # ------------------------------------------------------------------
     def _setup_voice(self) -> None:
@@ -402,7 +485,7 @@ class ChatBot:
             ),
             script=singing_cfg.get(
                 "script",
-                r"D:\BaiduNetdiskDownload\harness\SoulX-Singer"
+                r"D:\\SoulX-Singer"
                 r"\SoulX-Singer-main\sing_once.py",
             ),
             cache_dir=singing_cfg.get(
@@ -426,7 +509,7 @@ class ChatBot:
             python_exe=ace_cfg.get(
                 "python_exe", r"D:\miniconda\envs\acestep\python.exe"),
             repo=ace_cfg.get(
-                "repo", r"D:\BaiduNetdiskDownload\harness\ACE-Step-1.5"
+                "repo", r"D:\\ACE-Step-1.5"
                         r"\ACE-Step-1.5-main"),
         )
         self.song = SongService(
@@ -455,13 +538,13 @@ class ChatBot:
             script=str(
                 cover_cfg.get(
                     "script",
-                    r"D:\BaiduNetdiskDownload\harness\鲸鱼娘SVC翻唱_20261017"
+                    r"D:\鲸鱼娘SVC翻唱"
                     r"\cover.py")
             ),
             work_dir=str(
                 cover_cfg.get(
                     "work_dir",
-                    r"D:\BaiduNetdiskDownload\harness\鲸鱼娘SVC翻唱_20261017")
+                    r"D:\鲸鱼娘SVC翻唱")
             ),
             cache_dir=str(cover_cfg.get("cache_dir", "./data/song_cache/cover")),
             library_dirs=[
@@ -718,6 +801,10 @@ class ChatBot:
                         "replay_grace_seconds", 6.0
                     ),
                 )
+
+            # 2026-10-20：开机补消息。回放里的 @ / 私聊不再默默归档，
+            # 而是在回放结束后每个会话用一句话接住。
+            self._setup_catchup(wx_cfg)
 
             proactive_cfg = wx_cfg.get("proactive", {}) or {}
             idle_cfg = proactive_cfg.get("idle", {}) or {}
@@ -1372,6 +1459,14 @@ class ChatBot:
         self._add_recent_message(record)
         self._archive_message(record)
         if is_history:
+            # 2026-10-20：只归档不回复，但把「睡着时收到的」交给补消息服务，
+            # 回放窗口结束后由它每个会话回一句。
+            service = getattr(self, "catchup", None)
+            if service is not None:
+                try:
+                    service.note(message)
+                except Exception as exc:
+                    logger.debug(f"[开机补消息] 收录失败: {exc}")
             return
         await self.handler.enqueue(message)
 
@@ -1638,6 +1733,8 @@ class ChatBot:
             self.wechat.start_listening(loop)
             await self.handler.start()
             self._running = True
+            # 2026-10-20：等历史回放窗口结束，把睡着时收到的消息补一句
+            self._schedule_catchup()
             self._start_sticker_scheduler()
             self._start_connection_watchdog()
             logger.info("微信端已启动")

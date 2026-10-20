@@ -25,7 +25,7 @@ def make_message(text):
     return WeChatMessage(
         id=f"fh{int(now * 1000000)}",
         sender="wxid_sim",
-        sender_name="赵阳阳",
+        sender_name="本人",
         room_id=ROOM_ID,
         room_name=ROOM,
         content=text,
