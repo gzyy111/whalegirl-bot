@@ -62,6 +62,8 @@ wechat:
     delay_after_connect: 9.0
     dry_run: false
     enabled: true
+    greet_without_messages: true
+    greet_min_gap_minutes: 10.0
     include_private: true
     max_chars: 60
     max_groups: 3

@@ -44,6 +44,7 @@ class StubWeChat:
     def __init__(self, ok: bool = True) -> None:
         self.sent: list[tuple[str, str]] = []
         self.ok = ok
+        self.target_groups = ["示例群"]
 
     async def send_text(self, room: str, content: str) -> bool:
         self.sent.append((room, content))
@@ -356,6 +357,37 @@ async def case_pending_persist() -> None:
         check("补完清掉落盘", not pending_file.is_file())
 
 
+async def case_greeting() -> None:
+    print("\n[10] 没有消息也要冒一句开机问候")
+    with tempfile.TemporaryDirectory() as tmp:
+        wx = StubWeChat()
+        svc = make(tmp, wechat=wx, ai=StubAI("本鲸鱼娘回来了，有人在吗？"))
+        results = await svc.flush()
+        check("无消息也发了一句", len(wx.sent) == 1, str(wx.sent))
+        check("发到监控群", wx.sent and wx.sent[0][0] == "示例群", str(wx.sent))
+        check("标记为 greeting", bool(results and results[0].get("greeting")))
+        check("只用一句", "\n" not in wx.sent[0][1], repr(wx.sent[0][1]))
+
+        # 关掉开关就不问候
+        wx2 = StubWeChat()
+        svc2 = make(tmp + "/off", wechat=wx2, greet_without_messages=False)
+        await svc2.flush()
+        check("greet_without_messages=false -> 不冒泡", wx2.sent == [], str(wx2.sent))
+
+        # 刚启动过（不 eligible）也不问候
+        import json as _json
+
+        (Path(tmp + "/gate") / "catchup_state.json").parent.mkdir(parents=True, exist_ok=True)
+        (Path(tmp + "/gate") / "catchup_state.json").write_text(
+            _json.dumps({"acked": {}, "last_start": time.time() - 60, "last_flush": 0}),
+            encoding="utf-8",
+        )
+        wx3 = StubWeChat()
+        svc3 = make(tmp + "/gate", wechat=wx3, min_offline_minutes=60)
+        await svc3.flush()
+        check("间隔不足 -> 不问候", wx3.sent == [], str(wx3.sent))
+
+
 async def main() -> int:
     await case_collect()
     await case_one_sentence()
@@ -366,6 +398,7 @@ async def main() -> int:
     await case_offline_gate()
     await case_seen_live()
     await case_pending_persist()
+    await case_greeting()
     print(f"\n结果：{PASS} 通过 / {FAIL} 失败")
     return 0 if FAIL == 0 else 1
 

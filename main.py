@@ -372,6 +372,9 @@ class ChatBot:
             min_offline_minutes=float(
                 raw.get("min_offline_minutes", 60) or 0.0
             ),
+            greet_min_gap_minutes=float(
+                raw.get("greet_min_gap_minutes", 10) or 0.0
+            ),
             delay_after_connect=float(
                 raw.get("delay_after_connect", replay + 3.0)
             ),
@@ -382,13 +385,16 @@ class ChatBot:
             pending_path=str(
                 raw.get("pending_path", "./data/catchup_pending.json")
             ),
+            greet_without_messages=bool(
+                raw.get("greet_without_messages", True)
+            ),
             skip_seen_live=bool(raw.get("skip_seen_live", True)),
             dry_run=bool(raw.get("dry_run", False)),
         )
         logger.info(
             "[开机补消息] %s：只收@%s，私聊%s，最多 %d 个会话 / %d 条，"
             "没人叫时攒够 %d 条才冒泡，间隔 %.0f 分钟以上才补，"
-            "回放结束后 %.0f 秒处理"
+            "没有未接消息时%s，回放结束后 %.0f 秒处理"
             % (
                 "启用" if self.catchup.enabled else "关闭",
                 "是" if self.catchup.only_at_me else "否(全收)",
@@ -397,6 +403,7 @@ class ChatBot:
                 self.catchup.max_messages,
                 self.catchup.min_messages,
                 self.catchup.min_offline_minutes,
+                "也冒一句问候" if self.catchup.greet_without_messages else "不问候",
                 self.catchup.delay_after_connect,
             )
         )

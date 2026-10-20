@@ -11,6 +11,8 @@ wechat:
   reply_delay: 1.5
   catchup:                     # 开机时把睡着时收到的消息用一句话接住
     enabled: true
+    greet_without_messages: true  # 没有未接消息也冒一句开机问候
+    greet_min_gap_minutes: 10.0   # 两次开机问候的最小间隔（分钟）
     only_at_me: false          # true = 只补 @ 她和拍一拍
     include_private: true
     min_messages: 3            # 没人叫她时，攒够几条才冒泡

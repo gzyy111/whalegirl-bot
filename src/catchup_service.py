@@ -60,6 +60,20 @@ FALLBACKS = (
     "深海信号刚恢复，{n} 条消息都收到了，等我冒个泡就回你们。",
 )
 
+# 没有未接消息时的「开机问候」：只冒一句，不追着聊
+GREETING_PROMPT = (
+    "你刚刚回到群里（开机了）。请用一句话冒个泡打个招呼："
+    "不超过 {max_chars} 个字，只输出这一句。\n"
+    "要求：不要提「启动」「程序」「重启」「开机」这些字眼；不要 @ 任何人；"
+    "不要罗列你在做什么，不要提问过多。"
+)
+
+GREETING_FALLBACKS = (
+    "本鲸鱼娘醒了，尾巴拍了拍水花，有人在吗？",
+    "冒个泡……本鲸鱼娘回来了，有事直接说。",
+    "刚醒，深海信号正常，本鲸鱼娘上来看一眼。",
+)
+
 # 这些内容只有占位符、没有可回应的话，不参与补消息
 SKIP_CONTENTS = {
     "[图片]", "[表情]", "[语音]", "[视频]", "[文件]", "[动画表情]",
@@ -101,7 +115,9 @@ class CatchupService:
         max_chars: int = 60,
         min_messages: int = 3,
         min_offline_minutes: float = 60.0,
+        greet_min_gap_minutes: float = 10.0,
         delay_after_connect: float = 9.0,
+        greet_without_messages: bool = True,
         state_path: str = "data/catchup_state.json",
         archive_path: str = "data/message_archive.jsonl",
         pending_path: str = "data/catchup_pending.json",
@@ -118,7 +134,9 @@ class CatchupService:
         self.max_chars = max(12, int(max_chars))
         self.min_messages = max(1, int(min_messages))
         self.min_offline_minutes = max(0.0, float(min_offline_minutes))
+        self.greet_min_gap_minutes = max(0.0, float(greet_min_gap_minutes))
         self.delay_after_connect = max(0.0, float(delay_after_connect))
+        self.greet_without_messages = bool(greet_without_messages)
         self.state_path = Path(state_path)
         self.archive_path = Path(archive_path)
         self.pending_path = Path(pending_path)
@@ -132,6 +150,8 @@ class CatchupService:
         self._last_flush: float = 0.0
         self._last_start: float = 0.0
         self._offline_minutes: float = 0.0
+        self._eligible = False
+        self._greet_ok = False
         self._load_state()
         if self.skip_seen_live:
             self._load_seen_live()
@@ -172,8 +192,12 @@ class CatchupService:
         if self._last_start <= 0:
             self._offline_minutes = 0.0
             self._last_start = now
+            self._greet_ok = True          # 首次运行也算一次开机
             return True
         self._offline_minutes = max(0.0, (now - self._last_start) / 60.0)
+        # 问候的闸门比补消息松：用户要的是「开机就冒一句」，
+        # 只要不是一分钟内连点几次启动，就该说话。
+        self._greet_ok = self._offline_minutes >= self.greet_min_gap_minutes
         if self._offline_minutes < self.min_offline_minutes:
             # 注意：这里**不刷新** last_start，否则每次手动重启都把计时归零，
             # 一天里连点几次启动就永远凑不满阈值（功能会被饿死）。
@@ -470,6 +494,74 @@ class CatchupService:
                 logger.warning(f"[开机补消息] 生成一句话失败，用兜底话术: {exc}")
         return self._fallback(items)
 
+    # ── 没有消息时的开机问候 ────────────────────────────────
+    def _greet_targets(self) -> list[str]:
+        """问候发到哪：优先监控群，没有就用收集到的会话。"""
+        groups = [
+            str(g).strip()
+            for g in (getattr(self.wechat, "target_groups", []) or [])
+            if str(g).strip()
+        ]
+        if not groups:
+            groups = [room for room in self._missed.keys() if room]
+        return groups[: self.max_groups]
+
+    async def _compose_greeting(self) -> str:
+        ai = self.ai
+        if ai is not None and bool(getattr(ai, "is_available", False)):
+            try:
+                raw = await ai.chat(
+                    [
+                        {
+                            "role": "user",
+                            "content": GREETING_PROMPT.format(
+                                max_chars=self.max_chars
+                            ),
+                        }
+                    ],
+                    system_prompt=SYSTEM_PROMPT,
+                    temperature=0.9,
+                    max_tokens=120,
+                )
+                sentence = self._one_sentence(raw)
+                if sentence:
+                    return sentence
+            except Exception as exc:
+                logger.warning(f"[开机补消息] 生成问候失败，用兜底话术: {exc}")
+        return random.choice(GREETING_FALLBACKS)
+
+    async def _greet_groups(self, results: list[dict]) -> None:
+        targets = self._greet_targets()
+        if not targets:
+            logger.info("[开机补消息] 没有可问候的会话（target_groups 为空）")
+            return
+        text = await self._compose_greeting()
+        if not text:
+            return
+        for index, room in enumerate(targets):
+            ok = True
+            if self.dry_run:
+                logger.info(f"[开机补消息][dry-run][问候] {room}: {text}")
+            else:
+                try:
+                    ok = bool(await self.wechat.send_text(room, text))
+                except Exception as exc:
+                    ok = False
+                    logger.warning(f"[开机补消息] 问候发送失败 [{room}]: {exc}")
+            if ok:
+                now = time.time()
+                self._last_start = now
+                self._last_flush = now
+            results.append(
+                {"room": room, "count": 0, "text": text, "ok": ok, "greeting": True}
+            )
+            logger.info(
+                f"[开机补消息] {room}：开机问候 -> {text!r}"
+                f"（{'已发' if ok else '发送失败'}）"
+            )
+            if index < len(targets) - 1:
+                await asyncio.sleep(1.2)
+
     async def flush(self) -> list[dict]:
         """把攒下的消息一次性接住；返回每个会话的处理结果。
 
@@ -481,11 +573,14 @@ class CatchupService:
         if not self.enabled or self._running:
             return []
         rooms = [room for room, items in self._missed.items() if items]
-        if not rooms:
+        # 没有攒下任何消息时不直接返回：开机问候是独立的一件事。
+        # 问候有自己的闸门（greet_min_gap_minutes），比补消息松。
+        if not rooms and not (self.greet_without_messages and self._greet_ok):
             return []
 
         self._running = True
         results: list[dict] = []
+        sent_any = False
         try:
             rooms.sort(key=lambda r: len(self._missed.get(r, [])), reverse=True)
             selected = rooms[: self.max_groups]
@@ -537,6 +632,8 @@ class CatchupService:
                 results.append(
                     {"room": room, "count": len(items), "text": text, "ok": ok}
                 )
+                if ok:
+                    sent_any = True
                 logger.info(
                     f"[开机补消息] {room}：攒了 {len(items)} 条 -> "
                     f"{text!r}（{'已发' if ok else '发送失败'}）"
@@ -544,6 +641,10 @@ class CatchupService:
                 # 多会话之间隔一下，别一开机连发；最后一个不用等
                 if index < len(selected) - 1:
                     await asyncio.sleep(1.2)
+
+            # 没有任何消息可补，但确实是「睡了一觉回来」——冒一句开机问候
+            if not sent_any and not rooms and self.greet_without_messages:
+                await self._greet_groups(results)
             self._save_state()
         finally:
             self._running = False
